@@ -1,0 +1,92 @@
+.mod__coctail {
+  padding: 40px 20px;
+};
+
+.mod__coctail--name {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 1.19;
+    
+    color: #202025;
+
+    margin-bottom: 20px;
+};
+
+.mod__coctail--instractions {
+  font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.62;
+  
+    color: #202025;
+
+  margin-bottom: 20px;
+  text-transform: uppercase;
+};
+
+.mod__coctail--recipe {
+  font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.75;
+  
+    color: #5F6775;
+
+  margin-bottom: 32px;
+  width: 280px;
+};
+
+.mod__coctail--block__photo{
+  margin-bottom: 32px;
+  max-width: 480px;
+  height: 280px;
+  background-color: antiquewhite;
+}
+
+.mod__coctail--ingredients {
+  font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+
+    color: #000917;
+
+  margin-bottom: 8px;
+  text-transform: uppercase;
+};
+
+.mod__coctail--compound {
+  font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.5;
+
+    color: #202025;
+
+  margin-bottom: 8px;
+};
+
+.mod__coctail--items{
+  margin-bottom: 32px;
+}
+
+.mod__coctail--item {
+  font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.62;
+
+    color: #5F6775;
+};
+
+.mod__coctail--button {
+  width: 185px;
+  height: 48px;
+};
