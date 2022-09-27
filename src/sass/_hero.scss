@@ -1,0 +1,57 @@
+.hero-title {
+    font-family: 'Poppins';
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 1,9;
+        color: #FD5103;
+        margin-bottom: 28px;
+        text-align: center;
+
+}
+.section-hero {
+padding-top: 60px;
+padding-bottom: 58px;
+padding-left: 20px;
+padding-right: 20px;
+}
+
+.hero-text {
+    display: none;
+}
+.hero-list{
+    display: none;
+}
+
+.hero-text__mob {
+    font-family: 'Poppins'; 
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 2;
+        letter-spacing: 0.02em;
+        color: #000000;
+        margin-top: 28px;
+        text-align: center;
+}
+.hero-image{
+    text-align: center;
+    display: block;
+    height: auto;
+// width: 100%;
+}
+
+.sorry-text {
+    font-family: 'Poppins';
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 1,9;
+        text-align: center;
+        color: #202025;
+        margin-top: 122px;
+        margin-bottom: 63px;
+}
+
+.sorry-img{
+        text-align: center;
+        margin: auto;          
+}
+
