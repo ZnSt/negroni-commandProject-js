@@ -23,15 +23,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: $primary-bg-color;
-    border: 1px solid tomato;
 
     width: 320px;
     min-height: 673px;
-    padding: 0 20px;
+    
     
     @media screen and(min-width:768px) {
     width: 715px;
-    padding: 0 28px;
+    
 
     @media (min-width: 1280px) {
         max-width: 715px;
@@ -42,14 +41,14 @@
 
 }
 
-.modalw2-title{
-    font-family: 'Roboto';
+.modalw2__title{
+    font-family: $second-font;
     font-style: normal;
     font-weight: 900;
     font-size: 32px;
     line-height: 1.19;
 
-    color: var(--text-color);
+    color: $text-color;
 
     margin-top: 40px;
     margin-bottom: 20px;
@@ -59,16 +58,15 @@
       }
 }
 
-.modalw2-title-second{
-    font-family: 'Poppins';
+.modalw2__title-second{
+    font-family: $primary-font;
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
     line-height: 1.5;
     text-transform: uppercase;
     
-    color: var(--text-color);
-
+    color: $text-color;
     margin-bottom: 20px;
 
     @media screen and(min-width:768px) {
@@ -77,15 +75,15 @@
 
 }
 
-.modalw2-span{
+.modalw2__span{
     font-style: normal;
     font-weight: 600;
    
     color: #202025;
 }
 
-.modalw2-text{
-    font-family: 'Poppins';
+.modalw2__text{
+    font-family: $primary-font;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -95,12 +93,18 @@
 
     margin-bottom: 20px;
 
+    @media screen and(min-width:768px) {
+        margin-bottom: 40px;
+        padding-top: 28px;
+      }
+
+
     @media screen and(min-width:1280px) {
         margin-bottom: 28px;
       }
 }
 
-.modalw2-list{
+.modalw2__list{
     margin-bottom: 32px;
 
     @media screen and(min-width:768px) {
@@ -108,8 +112,8 @@
       }
 }
 
-.modalw2-item{
-    font-family: 'Poppins';
+.modalw2__item{
+    font-family: $primary-font;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -119,29 +123,33 @@
 }
 
 
-.modalw2-line{
-    margin-bottom: 28px;
-    padding-left: -10px;
-    padding-right: -10px;
-    
-    
-    @media screen and(max-width:767px) {
-        display: none;
-      }
-}
 
-
-.modalw2-btn{
+.modalw2__btn{
     position: absolute;
     top: 16px;
     right: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-color: transparent;
     background-color: transparent;
-    color: transparent;
 }
 
-.modalw2-link{
-fill: tomato;
+.modalw2__link{
+fill: $text-color;
+}
+
+
+.modalw2__border{  
+    @media screen and(min-width:768px) {
+        border-bottom: 1px solid $main-orange
+      }
+}
+
+.modalw2__p{
+    padding: 0 20px;
+    
+    @media screen and(min-width:768px) {
+    padding: 0 28px;
+  }
 }
