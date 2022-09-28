@@ -74,6 +74,14 @@
   border: 1px solid $main-orange;
 }
 
+.favorite-div-item.top {
+  border-radius: 4px 4px 0px 0px;
+}
+
+.favorite-div-item.bottom {
+  border-radius: 0px 0px 4px 4px;
+}
+
 .favorite-div-item :hover {
   background-color: $main-orange;
   color: #ffffff; 
@@ -120,6 +128,11 @@
 .header__modal-top {
   display: flex;
   justify-content: space-between;
+
+  @include tablet{
+  align-items: flex-end;
+  margin-bottom: 60px;
+  }
 }
 
 .header__modal-logo {
@@ -142,6 +155,10 @@
   border: transparent;
 
   margin-bottom: 37px;
+
+  @include tablet {
+    margin-bottom: 0;
+  }
 }
 
 a {
@@ -204,6 +221,7 @@ a {
   @include tablet {
     width: 288px;
     height: 40px;
+    margin-bottom: 0;
   }
 
   @include comp {
