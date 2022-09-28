@@ -4,7 +4,24 @@
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  @include comp {
   align-items: flex-end;
+  }
+}
+
+.header__open-modal-btn {
+  position: relative;
+  width: 30px;
+  height: 16px;
+  background-color: transparent;
+  border: transparent;
+}
+.header__open-modal-btn svg {
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .header__nav-ul {
@@ -64,6 +81,8 @@
 
 
 .header__search-form {
+  position: relative;
+
   @include mob {
     display: none;
   }
@@ -116,7 +135,11 @@
 .header__modal-close {
   max-width: 32px;;
   max-height: 32px;
+
+  padding: 7px;
+
   background-color: transparent;
+  border: transparent;
 
   margin-bottom: 37px;
 }
@@ -155,15 +178,31 @@ a {
   }
 }
 
-.header__input {
-  width: 240px;
+.btn-down {
+  width: 24px;
+  height: 24px;
+  border: 0;
+  background-color: transparent;
+
+  margin-left: 8px;
+
+  padding: 7px 3px 7px 3px;
+}
+
+.header__input,
+.header__modal-input {
+  width: 280px;
   height: 40px;
   border: 1px solid $main-orange;
   border-radius: 4px;
   margin-bottom: 40px;
 
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 48px;
+
   @include tablet {
-    width: 248px;
+    width: 288px;
     height: 40px;
   }
 
@@ -172,12 +211,33 @@ a {
   }
 }
 
-.header__search-btn {
+input::placeholder {
+  font-family: $primary-font;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.02em;
+
+  color: #5F6775;
+  opacity: 0.4;
+}
+
+.header__search-btn,
+.header__modal-search-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
   border: 1px solid $main-orange;
-  border-radius: 4px;
+  border-radius: 4px 0px 0px 4px;
 }
 
 .header__modal-form {
+  position: relative;
+
   @include tablet {
     display: none;
   }
