@@ -1,8 +1,4 @@
 .favor-ingreds {
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-
   &__title {
     text-align: center;
     font-family: $primary-font;
@@ -28,9 +24,6 @@
   }
 
   &__list {
-    // display: flex;
-    // flex-direction: column;
-    // gap: 20px;
     padding: 0 20px;
     margin-bottom: -20px;
 
@@ -39,8 +32,6 @@
       flex-wrap: wrap;
 
       padding: 0;
-      // gap: 32px;
-
       margin-bottom: -32px;
       margin-left: -32px;
     }
@@ -48,13 +39,13 @@
 }
 
 .ingreds__item {
+  margin-bottom: 20px;
   padding: 20px;
 
   min-width: 280px;
+
   border: 1px solid $main-orange;
   border-radius: 4px;
-
-  margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 32px;
@@ -63,8 +54,7 @@
   }
 
   @media screen and (min-width: 1280px) {
-    margin-bottom: 32px;
-    margin-left: 32px;
+    padding: 28px;
     flex-basis: calc(100% / 3 - 32px);
   }
 
@@ -87,7 +77,7 @@
     }
   }
 
-  &__descr {
+  &__descript {
     font-family: $primary-font;
     font-style: normal;
     font-weight: 600;
@@ -105,64 +95,87 @@
 
 .btn-container {
   display: flex;
-  // justify-content: space-between;
   gap: 22px;
-}
 
-.button-orang {
-  padding: 7px 17px;
-  // margin-right: 22px;
   @media screen and (min-width: 768px) {
-    padding: 12px 25px;
+    justify-content: space-between;
   }
-  @media screen and (min-width: 1280px) {
-    padding: 12px 38px;
-  }
-  color: #ffffff;
-  background-color: $accent-orange;
-  // transition: all $transition-time $transition-function;
-  // &:hover {
-  //   background-color: $btn-hover;
-  //   color: $main-orange;
-  // }
-}
-.button-transparent {
-  position: relative;
-  padding: 10px 20px;
-  @media screen and (min-width: 768px) {
-    padding: 12px;
-  }
-  @media screen and (min-width: 1280px) {
-    padding: 12px 23px 12px 12px;
-  }
-  color: $main-orange;
-  background-color: transparent;
-  align-items: center;
-  // display: flex;
-  // justify-content: space-between;
-  gap: 9px;
-  // transition: all $transition-time $transition-function;
-  // &:hover {
-  //   background-color: $btn-hover;
-  //   color: $main-orange;
-  // }
-  // &:hover .main__button-imgfull {
-  //   display: block;
-  //   position: absolute;
-  //   transform: translate(-29px, -9px);
-  // }
 }
 
 .button {
   font-family: $second-font;
-  font-weight: 400;
   font-size: 14px;
-  line-height: 1.7;
+  line-height: 1.71;
   letter-spacing: 0.02em;
+  text-align: center;
   border: 1px solid $accent-orange;
   border-radius: 4px;
+  height: 39px;
+
   @media screen and (min-width: 768px) {
     font-size: 20px;
     line-height: 1.2;
+    height: 48px;
+  }
+}
+
+.button-orange {
+  width: 108px;
+
+  color: #ffffff;
+  background-color: $accent-orange;
+  border: none;
+
+  @media screen and (min-width: 768px) {
+    width: 160px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 182px;
+  }
+
+  transition: all $transition-time $transition-function;
+
+  &:hover,
+  &:focus {
+    background-color: $btn-hover;
+    color: $main-orange;
+    outline: none;
+  }
+}
+.button-transparent {
+  width: 110px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (min-width: 768px) {
+    width: 123px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 141px;
+  }
+  color: $main-orange;
+  background-color: transparent;
+
+  transition: all $transition-time $transition-function;
+
+  &:hover,
+  &:focus {
+    // background-color: $btn-hover;
+    // color: $main-orange;
+    background-color: $main-orange;
+    color: $btn-hover;
+    outline: none;
+  }
+}
+
+.button__icon {
+  margin-left: 7px;
+  fill: $main-orange;
+
+  .button-transparent:hover &,
+  .button-transparent:focus & {
+    fill: $btn-hover;
   }
 }
