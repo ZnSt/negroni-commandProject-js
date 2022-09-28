@@ -16,11 +16,47 @@ padding-right: 20px;
 }
 
 .hero-text {
-    display: none;
+display: none;
 }
+
+ .hero-text {
+     @include tablet {
+         display: contents;
+        font-family : 'Poppins';
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 2;
+            letter-spacing: 0.02em;
+            color: #202025;
+            margin-top: 28px;
+            text-align: center;
+     }
+
+ }
+
+
+
 .hero-list{
-    display: none;
-}
+ display: none;
+    }
+ .hero-list {
+     @include tablet {
+         display:contents
+     }
+
+ }
+
+ .hero-list__mobi{
+    @include tablet{
+        display: none;
+    }
+ }
+  .hero-form {
+      @include tablet {
+          display: none;
+      }
+  }
+
 
 .hero-text__mob {
     font-family: 'Poppins'; 
@@ -32,11 +68,14 @@ padding-right: 20px;
         margin-top: 28px;
         text-align: center;
 }
+.hero-text__mob {
+    @include tablet {
+            display: none
+        }
+}
 .hero-image{
     text-align: center;
-    display: block;
-    height: auto;
-// width: 100%;
+width: 100%;
 }
 
 .sorry-text {
@@ -52,6 +91,7 @@ padding-right: 20px;
 
 .sorry-img{
         text-align: center;
-        margin: auto;          
+        width: 100%;
+             
 }
 
