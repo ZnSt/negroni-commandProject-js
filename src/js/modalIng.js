@@ -12,7 +12,6 @@ export async function getElement(name) {
     return response.data;
   } catch (error) {
     console.log('error', error);
-
   }
 }
 
@@ -102,18 +101,37 @@ function load(key) {
   }
 }
 
-const getIngredientOnLocal = localStorage.getItem('localIngredient');
-let finallyIngredientArray = [];
-
 function onClickBtnAdd(e) {
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
-  if (!getIngredientOnLocal) {
-    save('localIngredient', dataIngredient);
-    return;
+
+  const numberId = dataIngredient[0].idIngredient;
+  const btn1 = document.querySelector('.modalw2--button--add');
+
+  if (cheackLocalStorage(numberId)) {
+    let loadObj = load('localIngredient');
+    loadObj = loadObj.filter(
+      ingredients => ingredients.idIngredient != numberId
+    );
+    save('localIngredient', loadObj);
+    btn1.textContent = 'Add to favorite';
   } else {
+    let loadObj = load('localIngredient');
+    loadObj.push(...dataIngredient);
+    save('localIngredient', loadObj);
+    btn1.textContent = 'Remove from favorite';
   }
+}
+
+function cheackLocalStorage(id) {
+  const currentObj = load('localIngredient');
+  if (currentObj) {
+    return !!currentObj.find(ingredients => ingredients.idIngredient === id);
+  } else {
+    save('localIngredient', []);
+  }
+  return false;
 }
 
 onClickBtn.addEventListener('click', onClickBtnAdd);
