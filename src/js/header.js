@@ -27,11 +27,11 @@ function onFavoriteClick(event) {
   refs.favoriteDiv.classList.toggle('none');
 }
 
-// function onFavoriteModalClick(event) {
-//   event.preventDefault();
+function onFavoriteModalClick(event) {
+  event.preventDefault();
 
-//   refs.favoriteDivModal.classList.toggle('none');
-// }
+  refs.favoriteDivModal.classList.toggle('none');
+}
 
 //Поиск 
 searchFormEl = document.querySelector('.header__search-form');
