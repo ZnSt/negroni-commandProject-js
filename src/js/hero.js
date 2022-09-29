@@ -1,16 +1,11 @@
-const selectRef = document.querySelector(".select-wrapp");
-const listRef = document.querySelector(".select__dropdown");
+const ulContainer = document.querySelector('.hero-list__mobi');
+console.log(ulContainer);
 
-const onClick = (e) => {
-  listRef.classList.toggle("is-hidden");
-};
+ulContainer.addEventListener('click', onClickBtn);
 
-const onClickList = (e) => {
-  const target = e.target;
-  if (target.tagName === "LI") {
-    console.log(target.dataset.value);
+function onClickBtn(event) {
+  console.log(event.target);
+  if (event.target.nodeName !== 'LI') {
+    return;
   }
-};
-
-selectRef.addEventListener("click", onClick);
-listRef.addEventListener("click", onClickList);
+}
