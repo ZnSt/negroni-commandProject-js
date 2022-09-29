@@ -107,7 +107,7 @@
     color: $main-orange;
   }
 }
-.button__main-transparent {
+.button__main-empty {
   position: relative;
   padding: 10px 20px;
   @media screen and (min-width: 768px) {
@@ -142,7 +142,7 @@
     }
   }
 }
-.button__main {
+.button__class {
   font-family: $second-font;
   font-weight: 400;
   font-size: 14px;
