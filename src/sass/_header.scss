@@ -84,7 +84,7 @@
   display: none;
 }
 
-.favorite-div-item {
+.favorite-div-item a{
   display: block;
   width: 210px;
   height: 48px;
@@ -105,7 +105,8 @@
   border-radius: 0px 0px 4px 4px;
 }
 
-.favorite-div-item :hover {
+.favorite-div-item a:hover,
+.favorite-div-item a:focus {
   background-color: $main-orange;
   color: #ffffff; 
 }
@@ -121,6 +122,11 @@
   @include tablet {
     display: block;
   }
+}
+
+.header__input :hover,
+.header__input :focus {
+  border: 1px solid $main-orange;
 }
 
 // Модальное окно
@@ -218,6 +224,11 @@ a {
   }
 }
 
+.header__nav:hover,
+.header__nav:focus {
+  color: $main-orange;
+}
+
 .btn-down {
   width: 24px;
   height: 24px;
@@ -250,6 +261,11 @@ a {
   @include comp {
     margin-bottom: 0px;
   }
+}
+
+.header__modal-input :hover,
+.header__modal-input :focus {
+  border: 1px solid $main-orange;
 }
 
 input::placeholder {
