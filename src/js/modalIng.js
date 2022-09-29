@@ -1,6 +1,5 @@
 import axios from 'axios';
 const divs = document.querySelector('.modal2');
-const onClickBtn = document.querySelector('.modal2');
 
 let dataIngredient = [];
 
@@ -81,7 +80,12 @@ getElement('ice').then(data => {
   dataIngredient = data.ingredients;
   const markup = createIngredientMarkup(dataIngredient);
   add(markup);
+  divs.addEventListener('click', onCloseBtnFunc);
 });
+
+function onCloseBtnFunc() {
+  divs.classList.add('is-hidden');
+}
 
 function save(key, value) {
   try {
@@ -134,4 +138,4 @@ function cheackLocalStorage(id) {
   return false;
 }
 
-onClickBtn.addEventListener('click', onClickBtnAdd);
+divs.addEventListener('click', onClickBtnAdd);
