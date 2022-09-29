@@ -2,7 +2,6 @@
 //   // overflow: auto;
 // }
 
-
 .backdrop {
   position: fixed;
   top: 0;
@@ -15,11 +14,11 @@
   overflow: visible;
 }
 
-// .backdrop.is-hidden {
-//   opacity: 0;
-//   pointer-events: none;
-//   visibility: hidden;
-// }
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
 
 .modalw2 {
   position: absolute;
@@ -149,56 +148,54 @@
   //   border-color: tomato;
   //   border-radius: 0 8px 8px 0;
   // }
-  
+
   @media screen and(min-width:768px) {
     padding: 0 28px;
   }
 }
 
-
-.modalw2--blockbutton--add{
+.modalw2--blockbutton--add {
   margin-bottom: 40px;
   display: flex;
   justify-content: center;
 
   @media screen and(min-width:768px) {
-      order: 4;
-      margin-bottom: 28px;
-      display: flex;
-      justify-content: flex-end;
-    }
+    order: 4;
+    margin-bottom: 28px;
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 
 .modalw2--button--add {
   font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 1.2;
-    letter-spacing: 0.02em;
-  
-    color: #FFFFFF;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
 
-    background: #FE7031;
-    border: #FE7031;
-    border-radius: 4px;
+  color: #ffffff;
+
+  background: #fe7031;
+  border: #fe7031;
+  border-radius: 4px;
 
   width: 185px;
   height: 48px;
 
   &:hover,
   &:focus {
-      color: #FD5103;
-      background: #F5F5F5;
-    }
-  &:active{
-    color: #FFFFFF;
-    background: #FD5103;
+    color: #fd5103;
+    background: #f5f5f5;
   }
-};
+  &:active {
+    color: #ffffff;
+    background: #fd5103;
+  }
+}
 
-
-.scroll{
+.scroll {
   overflow: auto;
   height: 300px;
 }
