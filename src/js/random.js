@@ -49,7 +49,6 @@ window.addEventListener(`resize`, checkSize);
 function checkSize(e) {
   screenWidth = e.currentTarget.innerWidth;
 
-  console.log(screenWidth);
   if (screenWidth < 768) {
     clearContainer();
     start(3);
@@ -63,7 +62,6 @@ function checkSize(e) {
     start(12);
   }
 }
-// console.log(screenWidth);
 
 function clearContainer() {
   divRef.innerHTML = '';
