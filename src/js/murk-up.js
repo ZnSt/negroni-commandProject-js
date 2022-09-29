@@ -6,7 +6,7 @@ export default function crateImageMarkUp(response) {
         <div class="main__text-container">
           <h3 class="main__title-second">${strDrink}</h3>
           <div class="main__button-center">
-            <button class="button__main-orange button__main">Learn more</button>
+            <button class="button__main-full button__main">Learn more</button>
             <button data-id="${idDrink}" class="button__main-transparent button__main">
               Add to
 <span><svg
