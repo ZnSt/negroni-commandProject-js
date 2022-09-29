@@ -111,7 +111,6 @@ function onClickBtnAdd(e) {
   if (!getIngredientOnLocal) {
     save('localIngredient', dataIngredient);
     return;
-  } else {
   }
 }
 
