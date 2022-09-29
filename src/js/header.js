@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const refs = {
   openModalBtn: document.querySelector("[data-header-modal-open]"),
   closeModalBtn: document.querySelector("[data-header-modal-close]"),
@@ -30,4 +32,39 @@ function onFavoriteModalClick(event) {
 
   refs.favoriteDivModal.classList.toggle('none');
 }
+
+//Поиск 
+searchFormEl = document.querySelector('.header__search-form');
+searchFormModalEl = document.querySelector('.header__modal-form');
+
+searchFormEl.addEventListener('submit', submitForm);
+searchFormModalEl.addEventListener('submit', submitForm);
+
+function submitForm(event) {
+  event.preventDefault();
+
+  const { coctailName } = event.currentTarget.elements;
+  const coctaillNameVal = coctailName.value.trim();
+  console.log(coctaillNameVal);
+
+  if (!coctaillNameVal) {
+    return;
+  }
+
+  getCoctail(coctaillNameVal);
+}
+
+const BASE_URL = `www.thecocktaildb.com/api/json/v1/1/search.php?`;  
+
+async function getCoctail(coctaillName) {
+  try {
+    const responce = await axios.get(`${BASE_URL}s=${coctaillName}`);
+    console.log(responce.data);
+    return responce.data;
+    
+  }
+  catch(error) {
+    throw new Error(error);
+  }
+};
 
