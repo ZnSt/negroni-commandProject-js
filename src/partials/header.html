@@ -2,43 +2,30 @@
   <div class="container header">
     <nav class="header__nav-comp">
       <a href="" target="_blank" rel="noreferrer noopener nofollow">
-        <img class="header__main-logo" src="./images/Logo.png" alt="logo" />
+        <img class="header__main-logo" src="./images/Logo.png" alt="logo"/>
       </a>
 
-      <ul class="header__nav-ul">
-        <li class="header__nav-item">
-          <a
-            class="header__nav"
-            href=""
-            target="_blank"
-            rel="noreferrer noopener nofollow"
-            >Home</a
-          >
-        </li>
-        <li class="header__nav-item">
-          <a
-            class="header__nav favorite"
-            href=""
-            target="_blank"
-            rel="noreferrer noopener nofollow"
-            >Favorite</a
-          >
+  <nav class="header__nav-comp">
+    <a href="./index.html" target="_blank" rel="noreferrer noopener nofollow">
+      <img class="header__main-logo" src="./images/Logo.png" alt="logo">
+    </a>
 
-          <ul class="favorite-div none">
-            <li class="favorite-div-item top">
-              <a href="" target="_blank" rel="noreferrer noopener nofollow"
-                >Favorite cocktails</a
-              >
-            </li>
-            <li class="favorite-div-item bottom">
-              <a href="" target="_blank" rel="noreferrer noopener nofollow"
-                >Favorite ingredients</a
-              >
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
+  
+    <ul class="header__nav-ul">
+      <li class="header__nav-item">
+        <a class="header__nav" href="./index.html" target="_blank" rel="noreferrer noopener nofollow">Home</a>
+      </li>
+      <li class="header__nav-item">
+        <a class="header__nav favorite" href="" target="_blank" rel="noreferrer noopener nofollow">Favorite</a>
+        
+        <ul class="favorite-div none">
+          <li class="favorite-div-item top">
+            <a href="" target="_blank" rel="noreferrer noopener nofollow">Favorite cocktails</a>
+          </li>
+          <li class="favorite-div-item bottom">
+            <a href="./favor-ingreds.html" target="_blank" rel="noreferrer noopener nofollow">Favorite ingredients</a>
+          </li>
+        </ul>
 
     <form class="header__search-form">
       <button type="submit" class="header__search-btn">
@@ -49,9 +36,40 @@
       <input type="text" placeholder="Search" class="header__input" />
     </form>
 
-    <button class="header__open-modal-btn" type="button" data-header-modal-open>
-      <svg width="30px" height="16px">
-        <use href="./images/svg/symbol-defs.svg#icon-menu"></use>
+  <form class="header__search-form">
+    <button type="submit" class="header__search-btn">
+      <svg width="24px" height="24px">
+        <use href="./images/svg/symbol-defs.svg#icon-search"></use>
+      </svg> 
+    </button>
+    <input type="text" name="coctailName" placeholder="Search" class="header__input" />
+  </form>
+
+  <button class="header__open-modal-btn" type="button" data-header-modal-open>
+    <svg width="30px" height="16px">
+      <use href="./images/svg/symbol-defs.svg#icon-menu"></use>
+    </svg> 
+  </button>
+
+ <!-- Модальное окно header -->
+  <div class="header__modal is-hidden" data-header-modal>
+  
+  <div class="header__modal-top">
+  <a href="./index.html" target="_blank" rel="noreferrer noopener nofollow" class="header__modal-logo">
+    <img src="./images/COCKTAILS.png" alt="logo">
+  </a>
+
+  <button type="button" class="header__modal-close" data-header-modal-close>
+    <svg class="" width="18px" height="18px">
+        <use href="./images/svg/symbol-defs.svg#icon-close"></use>
+        </svg> 
+  </button>
+  </div>
+
+  <form class="header__modal-form">
+    <button type="submit" class="header__modal-search-btn">
+      <svg width="24px" height="24px">
+        <use href="./images/svg/symbol-defs.svg#icon-search"></use>
       </svg>
     </button>
 
@@ -99,33 +117,8 @@
               >Home</a
             >
           </li>
-          <li class="header__nav-item">
-            <a
-              class="header__nav"
-              href=""
-              target="_blank"
-              rel="noreferrer noopener nofollow"
-              >Favorite</a
-            >
-
-            <button class="btn-down favorite-modal">
-              <svg width="18px" height="10px">
-                <use href="./images/svg/symbol-defs.svg#icon-down"></use>
-              </svg>
-            </button>
-
-            <ul class="favorite-div-modal none">
-              <li class="favorite-div-item top">
-                <a href="" target="_blank" rel="noreferrer noopener nofollow"
-                  >Favorite cocktails</a
-                >
-              </li>
-              <li class="favorite-div-item bottom">
-                <a href="" target="_blank" rel="noreferrer noopener nofollow"
-                  >Favorite ingredients</a
-                >
-              </li>
-            </ul>
+          <li class="favorite-div-item bottom">
+            <a href="./favor-ingreds.html" target="_blank" rel="noreferrer noopener nofollow">Favorite ingredients</a>
           </li>
         </ul>
       </nav>
