@@ -1,4 +1,4 @@
-import './js/header'
+import './js/header';
+import './js/random';
+import './js/modalIng';
 import './js/addCoctToFav';
-import './js/modalIng'
-
