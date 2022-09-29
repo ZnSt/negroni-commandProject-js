@@ -63,7 +63,7 @@ function checkSize(e) {
     start(12);
   }
 }
-console.log(screenWidth);
+// console.log(screenWidth);
 
 function clearContainer() {
   divRef.innerHTML = '';
