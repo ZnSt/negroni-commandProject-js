@@ -10,6 +10,35 @@
         color: #FD5103;
         margin-bottom: 28px;
         text-align: center;
+            @include tablet {
+                        width: 336px;
+                            margin-bottom: 40px;
+                            font-size: 26px;
+                            line-height: 1.62;
+                            text-align:start
+                        }
+                                   @include comp {
+                                    width: 688px;
+                                        font-size: 52px;
+                                        line-height: 1.5;
+
+                                   }}
+.hero-content {
+    @include tablet {
+           display: flex;
+            text-align: start;
+                flex-direction: column;
+                place-content: flex-start;
+                align-items: center;
+                padding-top: 60px;
+                padding-left: 20px;
+                display: flex;
+                align-items: flex-start;
+        }
+                        //    @include comp {
+                        //     display: flex;
+            
+                        //    }
 
 }
 .section-hero {
@@ -27,14 +56,20 @@ display: none;
      @include tablet {
          display: contents;
         font-family : 'Poppins';
-            font-weight: 500;
+        font-weight: 500;
             font-size: 14px;
             line-height: 2;
             letter-spacing: 0.02em;
             color: #202025;
             margin-top: 28px;
             text-align: center;
+                margin-bottom: 40px;
+                width: 324px;
      }
+         @include comp {
+            font-size: 18px;
+            line-height: 1.5;
+         }
 
  }
 
@@ -52,8 +87,12 @@ display: none;
         flex-wrap: wrap;
         justify-content: center;
         place-items: center;
+        margin-top: 40px;
          
      }
+         @include comp {
+            width: 520px;
+            }
     
  }
 
@@ -85,9 +124,24 @@ display: none;
             display: none
         }
 }
-.hero-image{
-    text-align: center;
-width: 100%;
+// .hero-image{
+// text-align: center;
+// width: 100%;
+// }
+.hero-image {
+    margin-bottom: 28px;
+
+    @media screen and (min-width: 768px) {
+        position: absolute;
+        top: 38px;
+        right: 32px;
+        z-index: 5;
+    }
+
+    @media screen and (min-width: 1280px) {
+        top: 7px;
+        right: 16px;
+    }
 }
 
 .sorry-text {
@@ -105,35 +159,38 @@ width: 100%;
         text-align: center;
         width: 100%;
         height: auto;
+        display: block;
              
 }
 
 .select{
-    // position: relative;
     width: 93px;
     max-height: 84px;
     border: 1px solid #FD5103;
     border-radius: 4px;
-    // display: flex;
-    // left: 0;
-    // right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    cursor: pointer;
+        text-align: start;
+
+  
 
 }
 .app {
     display: flex;
     justify-content: center;
+        @include tablet {
+                display: none;
+            }
 }
 
 .select__dropdown{
     border: 1px solid #FD5103;
     border-radius: 4px;
-    // position: absolute;
     width: 93px;
     max-height: 84px;
     margin: 0 auto;
-    // top: 22px;
-    // left: 0;
-    // right: 0;
     overflow-y: auto; 
 }
 
@@ -183,5 +240,38 @@ padding-left: 10px;
     align-items: center;
     text-align: center;
     color: #5F6775;
+    @include tablet {
+                width: 24px;
+                    height: 25px;
+                    text-align: center;
+                    color: #5F6775;
+                    align-items: center;
+                    line-height: 1.5;
+                    
+        }
+                        @include comp {
+                            width: 40px;
+                            height: 40px;
+                            left: 335px;
+                            top: 468px;
+                            font-weight: 700;
+                            font-size: 24px;
+                            line-height: 1.5;
+                            display: flex;
+                            align-items: center;
+                            text-align: center;
+            
+                        }
 }
+.hero-item:hover,
+.hero-item:focus {
+    color: #FD5103;
+}
+.hero__icon{
+    fill: #FD5103;
+    width: 24px;
+    padding-right: 5px;
+   
 
+
+}

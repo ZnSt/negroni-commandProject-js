@@ -1,6 +1,6 @@
 <section class="section-hero">
   <div class="container">
-    <div>
+    <div class="hero-content">
       <h1 class="hero-title">A party without cocktails is not like a party</h1>
 
       <p class="hero-text">Search your favorite cocktail by ABC</p>
@@ -82,12 +82,12 @@
         <div class="select">
           <span class="input-text">A</span>
           <span>
-            <svg class="hero__icon" width="15" height="15">
+            <svg class="hero__icon" width="12" height="7">
               <use href="./images/svg/symbol-defs.svg#icon-down"></use>
             </svg>
           </span>
         </div>
-        <div class="select__dropdown">
+        <div class="select__dropdown is-hidden">
           <ul class="hero-list__mobi">
             <li class="select__list" data-value="A">A</li>
             <li class="select__list" data-value="B">B</li>
@@ -137,14 +137,14 @@
             ./images/hero/photo-min-1x.png 1x,
             ./images/hero/photo-min-2x.png 2x
           "
-          media="(max-width: 768px)"
+          media="(min-width: 768px)"
         />
         <source
           srcset="
             ./images/hero/photo-tab-1x.png 1x,
             ./images/hero/photo-tab-2x.png 2x
           "
-          media="(min-width: 767px)"
+          media="(max-width: 767px)"
         />
         <img
           class="sorry-img"
