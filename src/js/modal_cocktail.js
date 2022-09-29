@@ -31,6 +31,13 @@ function addMarcup(marcupString) {
   refs.modCoctailWindow.insertAdjacentHTML('beforeend', marcupString);
 }
 
+function andrei(elem){
+    if(!elem){
+      return elem = "-"
+    }
+    return elem
+}
+
 function createMarkupCoct(value = []) {
   return value.map(({ idDrink, strDrinkThumb, strDrink, strInstructions, strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5, }) => {
     return `<p class="mod__coctail--name">${strDrink}</p>
@@ -49,11 +56,11 @@ function createMarkupCoct(value = []) {
       <p class="mod__coctail--ingredients">ingredients</p>
       <p class="mod__coctail--compound">Per cocktail</p>
       <ul class="mod__coctail--items">
-        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${strMeasure1} ${strIngredient1}</a></li>
-        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${strMeasure2} ${strIngredient2}</a></li>
-        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${strMeasure3} ${strIngredient3}</a></li>
-        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${strMeasure4} ${strIngredient4}</a></li>
-        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${strMeasure5} ${strIngredient5}</a></li>
+        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${strMeasure1} ${andrei(strIngredient1)}</a></li>
+        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${strMeasure2} ${andrei(strIngredient2)}</a></li>
+        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${strMeasure3} ${andrei(strIngredient3)}</a></li>
+        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${strMeasure4} ${andrei(strIngredient4)}</a></li>
+        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${strMeasure5} ${andrei(strIngredient5)}</a></li>
       </ul>
     </div>
   </div>
