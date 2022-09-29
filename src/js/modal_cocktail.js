@@ -33,7 +33,7 @@ function addMarcup(marcupString) {
 
 function andrei(elem){
     if(!elem){
-      return elem = "-"
+      return elem = ""
     }
     return elem
 }
@@ -56,11 +56,11 @@ function createMarkupCoct(value = []) {
       <p class="mod__coctail--ingredients">ingredients</p>
       <p class="mod__coctail--compound">Per cocktail</p>
       <ul class="mod__coctail--items">
-        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${strMeasure1} ${andrei(strIngredient1)}</a></li>
-        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${strMeasure2} ${andrei(strIngredient2)}</a></li>
-        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${strMeasure3} ${andrei(strIngredient3)}</a></li>
-        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${strMeasure4} ${andrei(strIngredient4)}</a></li>
-        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${strMeasure5} ${andrei(strIngredient5)}</a></li>
+        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${andrei(strMeasure1)} ${andrei(strIngredient1)}</a></li>
+        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${andrei(strMeasure2)} ${andrei(strIngredient2)}</a></li>
+        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${andrei(strMeasure3)} ${andrei(strIngredient3)}</a></li>
+        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${andrei(strMeasure4)} ${andrei(strIngredient4)}</a></li>
+        <li class="mod__coctail--item"><a class="mod__coctail--item__link" href="#">&#10038 ${andrei(strMeasure5)} ${andrei(strIngredient5)}</a></li>
       </ul>
     </div>
   </div>
