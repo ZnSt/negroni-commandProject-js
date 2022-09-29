@@ -3,6 +3,7 @@
       padding: 40px 20px;
       position: relative;
     }
+    max-width: 822px
 };
 
 .mod__coctail--name {
@@ -19,8 +20,8 @@
     @media screen and(min-width:768px) {
         order: 1;
     position: absolute;
-    top: 5%;
-    left: 37%;
+    top: 40px;
+    left: 320px;
       }
 };
 
@@ -87,12 +88,13 @@
 
 .mod__coctail--block__photo{
   margin-bottom: 32px;
-  max-width: 480px;
-  height: 280px;
-  background-color: antiquewhite;
+  max-width: 440px;
+}
 
+.mod__coctail--photo{
+  max-width: 100%;
   @media screen and(min-width:768px) {
-      width: 33%;
+      width: 288px;
     }
 }
 
@@ -101,7 +103,6 @@
     order: 2;
     padding-top: 100px;
     padding-left: 32px;
-    width: 66%;
   }
 }
 
@@ -134,9 +135,20 @@
   margin-bottom: 32px;
 }
 
-// .mod__coctail--item {
-
-// };
+.mod__coctail--item {
+      font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.62;
+      
+        color: #5F6775;
+      
+        &:hover,
+        &:focus {
+          color: antiquewhite;
+        }
+};
 
 .mod__coctail--item__link{
     font-family: 'Poppins';
