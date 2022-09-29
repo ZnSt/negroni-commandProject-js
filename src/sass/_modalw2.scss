@@ -1,3 +1,8 @@
+.modal2{
+  // overflow: auto;
+}
+
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -10,11 +15,11 @@
   overflow: visible;
 }
 
-.backdrop.is-hidden {
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
-}
+// .backdrop.is-hidden {
+//   opacity: 0;
+//   pointer-events: none;
+//   visibility: hidden;
+// }
 
 .modalw2 {
   position: absolute;
@@ -24,14 +29,15 @@
   background-color: $primary-bg-color;
 
   width: 320px;
-  min-height: 673px;
+  max-height: 673px;
+  overflow: hidden;
 
   @media screen and(min-width:768px) {
     width: 715px;
 
     @media (min-width: 1280px) {
       max-width: 715px;
-      min-height: 557px;
+      max-height: 557px;
     }
   }
 }
@@ -127,7 +133,7 @@
 }
 
 .modalw2__link {
-  fill: $text-color;
+  fill: tomato;
 }
 
 .modalw2__border {
@@ -138,8 +144,61 @@
 
 .modalw2__p {
   padding: 0 20px;
-
+  // ::-webkit-scrollbar{
+  //   width: 8px;
+  //   border-color: tomato;
+  //   border-radius: 0 8px 8px 0;
+  // }
+  
   @media screen and(min-width:768px) {
     padding: 0 28px;
   }
+}
+
+
+.modalw2--blockbutton--add{
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+
+  @media screen and(min-width:768px) {
+      order: 4;
+      margin-bottom: 28px;
+      display: flex;
+      justify-content: flex-end;
+    }
+}
+
+.modalw2--button--add {
+  font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  
+    color: #FFFFFF;
+
+    background: #FE7031;
+    border: #FE7031;
+    border-radius: 4px;
+
+  width: 185px;
+  height: 48px;
+
+  &:hover,
+  &:focus {
+      color: #FD5103;
+      background: #F5F5F5;
+    }
+  &:active{
+    color: #FFFFFF;
+    background: #FD5103;
+  }
+};
+
+
+.scroll{
+  overflow: auto;
+  height: 300px;
 }
