@@ -2,12 +2,12 @@ export default function crateImageMarkUp(response) {
   return response
     .map(({ strDrinkThumb, strDrink, idDrink }) => {
       return `<div  class="main__container">
-        <img width='325' height='325' class="main__img" src="${strDrinkThumb}" alt="negroni" />
+        <img width='325px' height='325px' class="main__img" src="${strDrinkThumb}" alt="negroni" />
         <div class="main__text-container">
           <h3 class="main__title-second">${strDrink}</h3>
           <div class="main__button-center">
-            <button class="button__main-orange button__main">Learn more</button>
-            <button data-id="${idDrink}" class="button__main-transparent button__main">
+            <button class="button__main-full button__class">Learn more</button>
+            <button data-id="${idDrink}" class="button__main-empty button__class">
               Add to
 <span><svg
 class="main__button-img"
