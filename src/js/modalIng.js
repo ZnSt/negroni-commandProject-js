@@ -77,7 +77,7 @@ export function add(markupString) {
   divs.insertAdjacentHTML('afterbegin', markupString);
 }
 
-getElement('ice').then(data => {
+getElement('vodka').then(data => {
   dataIngredient = data.ingredients;
   const markup = createIngredientMarkup(dataIngredient);
   add(markup);
@@ -109,12 +109,10 @@ function onClickBtnAdd(e) {
     return;
   }
   finallyIngredientArray = JSON.parse(localStorage.getItem('localIngredient'));
-  console.log(finallyIngredientArray);
-  finallyIngredientArray.push();
-  // if (!getIngredientOnLocal) {
-  //   save('localIngredient', dataIngredient);
-  //   return;
-  // }
+  if (!getIngredientOnLocal) {
+    save('localIngredient', dataIngredient);
+    return;
+  }
 }
 
 onClickBtn.addEventListener('click', onClickBtnAdd);
