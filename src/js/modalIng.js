@@ -12,6 +12,7 @@ export async function getElement(name) {
     return response.data;
   } catch (error) {
     console.log('error', error);
+
   }
 }
 
