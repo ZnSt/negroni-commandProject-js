@@ -80,7 +80,8 @@ getElement('ice').then(data => {
   dataIngredient = data.ingredients;
   const markup = createIngredientMarkup(dataIngredient);
   add(markup);
-  divs.addEventListener('click', onCloseBtnFunc);
+  const onCloseBtn = document.querySelector('.modalw2__btn');
+  onCloseBtn.addEventListener('click', onCloseBtnFunc);
 });
 
 function onCloseBtnFunc() {
