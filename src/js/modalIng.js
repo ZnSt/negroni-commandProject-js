@@ -108,10 +108,13 @@ function onClickBtnAdd(e) {
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
-  if (!getIngredientOnLocal) {
-    save('localIngredient', dataIngredient);
-    return;
-  }
+  finallyIngredientArray = JSON.parse(localStorage.getItem('localIngredient'));
+  console.log(finallyIngredientArray);
+  finallyIngredientArray.push();
+  // if (!getIngredientOnLocal) {
+  //   save('localIngredient', dataIngredient);
+  //   return;
+  // }
 }
 
 onClickBtn.addEventListener('click', onClickBtnAdd);
