@@ -300,6 +300,8 @@ a {
   }
 }
 
+.header__input :hover,
+.header__input :focus,
 .header__modal-input :hover,
 .header__modal-input :focus {
   border: 1px solid $main-orange;
