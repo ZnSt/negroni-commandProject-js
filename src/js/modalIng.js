@@ -72,16 +72,16 @@ export function createIngredientMarkup(response = []) {
     })
     .join('');
 }
-export function add(markupString) {
+function add(markupString) {
   divs.insertAdjacentHTML('afterbegin', markupString);
 }
 
-getElement('ice').then(data => {
+getElement('vodka').then(data => {
   dataIngredient = data.ingredients;
   const markup = createIngredientMarkup(dataIngredient);
   add(markup);
-  const onCloseBtn = document.querySelector('.modalw2__btn');
-  onCloseBtn.addEventListener('click', onCloseBtnFunc);
+  // const onCloseBtn = document.querySelector('.modalw2__btn');
+  // onCloseBtn.addEventListener('click', onCloseBtnFunc);
 });
 
 function onCloseBtnFunc() {
@@ -107,6 +107,8 @@ function load(key) {
 }
 
 function onClickBtnAdd(e) {
+  console.log(divs.closest('.modalw2__btn'));
+
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
