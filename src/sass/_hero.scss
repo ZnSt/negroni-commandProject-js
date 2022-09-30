@@ -117,30 +117,58 @@
   }
 }
 
-.container__picture {
-  position: relative;
+// .container__picture {
+//   position: relative;
+// }
+
+.picture-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding-left: 20px;
+    padding-right: 0px;
+    @include tablet {
+            position: absolute;
+                top: 131px;
+                right: 0;
+        }
+           
 }
 .hero-image {
-  margin-bottom: 28px;
+    width: 100%;
+    height: auto;
+    @include tablet {
+        width: 336px;
 
-  @media screen and (min-width: 320px) and (max-width: 367px) {
-    width: 300px;
-    position: relative;
-    right: 0;
-  }
+        }
+                 @include comp {
+                     width: 501px;
+        
+                 }
+    }
 
-  @media screen and (min-width: 768px) {
-    position: absolute;
-    top: 38px;
-    right: 32px;
-    z-index: -5;
-  }
 
-  @media screen and (min-width: 1280px) {
-    top: 7px;
-    right: 16px;
-  }
-}
+
+
+//   @media screen and (min-width: 320px) and (max-width: 367px) {
+//     width: 300px;
+//     position: relative;
+//     right: 0;
+//   }
+
+//   @media screen and (min-width: 768px) {
+//     position: absolute;
+//     top: 38px;
+//     right: 32px;
+//     z-index: -5;
+//   }
+
+//   @media screen and (min-width: 1280px) {
+//     top: 7px;
+//     right: 16px;
+//   }
+// }
 
 .sorry.error-hidden {
   opacity: 0;
@@ -231,7 +259,6 @@
 .select__list {
   padding: 4px 10px;
   display: flex;
-  width: 66px;
   height: 28px;
   font-family: 'Poppins';
   font-weight: 700;
