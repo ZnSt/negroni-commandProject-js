@@ -1,13 +1,13 @@
 import * as API from '../servises/cocktails-api';
 import crateImageMarkUp from './murk-up';
-import errorPicture from './error-markup';
 
 const ulContainer = document.querySelector('.hero-list');
 const renderContainer = document.querySelector('.main__flex');
+const errorContainer = document.querySelector('.sorry');
 
 ulContainer.addEventListener('click', onClickBtn);
 
-async function onClickBtn(event) {
+export default async function onClickBtn(event) {
   const value = event.target.dataset.value.toLowerCase();
   if (event.target.nodeName !== 'LI') {
     return;
@@ -20,9 +20,9 @@ async function onClickBtn(event) {
 
     renderContainer.innerHTML = '';
     renderContainer.insertAdjacentHTML('beforeend', markup);
+    errorContainer.classList.add('error-hidden');
   } catch (error) {
     renderContainer.innerHTML = '';
-    const errorPic = errorPicture();
-    renderContainer.insertAdjacentHTML('beforeend', errorPic);
+    errorContainer.classList.remove('error-hidden');
   }
 }
