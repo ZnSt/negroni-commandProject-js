@@ -72,6 +72,7 @@ async function getRandomData(size) {
   const promises = await getRandomCoctails(size);
   const data = await returnAllCard(promises);
   const fData = filterData(data);
+  console.log(data)
 
   allPromises = [...fData];
   start(size);
