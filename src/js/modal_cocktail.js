@@ -4,9 +4,6 @@ const refs = {
   modCoctailBtnAdd: document.querySelector('.mod__coctail--button--add'),
 };
 // const renderingPage = document.querySelector('')
-
-
-
 // refs.modCoctailBtnAdd.addEventListener('click', addCocktToFavor)
 
 async function openModalCoctWind(getCocktail) {
@@ -38,7 +35,8 @@ function andrei(elem){
 }
 
 function createMarkupCoct(value = []) {
-  return value.map(({ idDrink, strDrinkThumb, strDrink, strInstructions, strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5, }) => {
+
+  return value.map(({ idDrink, strDrinkThumb, strDrink, strInstructions, strIngredient1, strMeasure1, }) => {
     return `<div class="mod__coctailw1"><p class="mod__coctail--name">${strDrink}</p>
   <button class="mod__coctail--btn__close"><svg width="18px" height="18px">
       // <use href=".//images/svg/symbol-defs.svg#icon-close" class="mod__coctail--btn__link"></use>
@@ -69,7 +67,6 @@ function createMarkupCoct(value = []) {
   }).join()
 
 }
-
 
 // refs.modCoctailBtnClose.addEventListener('click', clearMarkup)
   
