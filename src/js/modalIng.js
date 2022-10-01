@@ -80,6 +80,7 @@ getElement('vodka').then(data => {
   dataIngredient = data.ingredients;
   const markup = createIngredientMarkup(dataIngredient);
   add(markup);
+  window.addEventListener('keydown', onEscapeBtnPush);
 });
 
 function clearMarkupModal(element) {
@@ -130,6 +131,7 @@ function onClickBtnAdd(e) {
     save('localIngredient', loadObj);
     btn1.textContent = 'Remove from favorite';
   }
+  
 }
 
 function cheackLocalStorage(id) {
@@ -147,3 +149,25 @@ function onCloseBtnFunc() {
 }
 
 divs.addEventListener('click', onClickBtnAdd);
+divs.addEventListener('click', closeBackdrop);
+
+
+function onEscapeBtnPush (event) {
+  if (event.code !== 'Escape') {
+    return;
+  }
+  onCloseBtnFunc();
+  window.removeEventListener('keydown', onEscapeBtnPush);
+};
+
+function closeBackdrop (event){
+  if (event.currentTarget !== event.target) {
+    return;
+  }
+
+
+    if (!event.target.classList.contains('modal2')) {
+      return;
+    }
+  onCloseBtnFunc();
+};
