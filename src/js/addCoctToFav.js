@@ -34,25 +34,25 @@ export let arrayFromLStorage=JSON.parse(localStorage.getItem('FAV_COCTAILS'));
 // }
 
 
-function remFromLocalStCoctails(coctailID) {
-  const localStorageData = localStorage.getItem('FAV_COCTAILS');
-  if (!localStorageData) {
-    return;
-  } else {
-    const localStorageDataRes = JSON.parse(localStorageData);
-    const favCoctArray = [];
+// function remFromLocalStCoctails(coctailID) {
+//   const localStorageData = localStorage.getItem('FAV_COCTAILS');
+//   if (!localStorageData) {
+//     return;
+//   } else {
+//     const localStorageDataRes = JSON.parse(localStorageData);
+//     const favCoctArray = [];
 
-    for (const coctail of localStorageDataRes) {
-      if (coctail.idDrink === coctailID) {
-        continue;
-      }
-      favCoctArray.push(coctail);
-    }
-    localStorage.removeItem('FAV_COCTAILS');
-    localStorage.setItem('FAV_COCTAILS', JSON.stringify(favCoctArray));
-  }
+//     for (const coctail of localStorageDataRes) {
+//       if (coctail.idDrink === coctailID) {
+//         continue;
+//       }
+//       favCoctArray.push(coctail);
+//     }
+//     localStorage.removeItem('FAV_COCTAILS');
+//     localStorage.setItem('FAV_COCTAILS', JSON.stringify(favCoctArray));
+//   }
 
-}
+// }
 // LERA
 // let screenWidth = 0;
 // window.addEventListener(`resize`, checkSize);
