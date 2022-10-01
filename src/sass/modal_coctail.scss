@@ -1,9 +1,26 @@
 .mod__coctail {
-  @media screen and(max-width:767px) {
-      padding: 40px 20px;
       position: relative;
-    }
+    
 };
+
+.mod__coctailw1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $primary-bg-color;
+
+  width: 480px;
+  max-height: 1110px;
+  padding: 40px 20px;
+  overflow: hidden;
+
+  @media screen and(min-width:768px) {
+      width: 768px;
+      max-height: 90%;
+      padding: 0 28px 28px 0;
+    }
+}
 
 .mod__coctail--name {
     font-family: 'Roboto';
@@ -19,8 +36,8 @@
     @media screen and(min-width:768px) {
         order: 1;
     position: absolute;
-    top: 5%;
-    left: 37%;
+    top: 40px;
+    left: 320px;
       }
 };
 
@@ -85,14 +102,20 @@
     }
 };
 
+.mod__scroll {
+  overflow: auto;
+  max-height: 150px;
+}
+
 .mod__coctail--block__photo{
   margin-bottom: 32px;
-  max-width: 480px;
-  height: 280px;
-  background-color: antiquewhite;
+  max-width: 440px;
+}
 
+.mod__coctail--photo{
+  max-width: 100%;
   @media screen and(min-width:768px) {
-      width: 33%;
+      width: 288px;
     }
 }
 
@@ -101,7 +124,6 @@
     order: 2;
     padding-top: 100px;
     padding-left: 32px;
-    width: 66%;
   }
 }
 
@@ -134,9 +156,20 @@
   margin-bottom: 32px;
 }
 
-// .mod__coctail--item {
-
-// };
+.mod__coctail--item {
+      font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.62;
+      
+        color: #5F6775;
+      
+        &:hover,
+        &:focus {
+          color: antiquewhite;
+        }
+};
 
 .mod__coctail--item__link{
     font-family: 'Poppins';
@@ -156,7 +189,6 @@
 .mod__coctail--blockbutton--add{
   @media screen and(min-width:768px) {
       order: 4;
-      margin-right: 28px;
       display: flex;
       justify-content: flex-end;
     }
@@ -179,6 +211,8 @@
   width: 185px;
   height: 48px;
 
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover,
   &:focus {
       color: #FD5103;
@@ -189,43 +223,3 @@
     background: #FD5103;
   }
 };
-
-.mod__coctail--blockbutton--remove {
-  @media screen and(min-width:768px) {
-    order: 4;
-    margin-right: 28px;
-    display: flex;
-    justify-content: flex-end;
-  }
-}
-
-.mod__coctail--button--remove {
-  font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 1.2;
-    letter-spacing: 0.02em;
-  
-    color: #FFFFFF;
-  
-    background: #FE7031;
-    border: #FE7031;
-    border-radius: 4px;
-  
-    width: 185px;
-    height: 48px;
-  
-    &:hover,
-    &:focus {
-      color: #FD5103;
-      background: #F5F5F5;
-    }
-  
-    &:active {
-      color: #FFFFFF;
-      background: #FD5103;
-    }
-};
-
-
