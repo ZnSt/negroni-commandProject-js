@@ -42,9 +42,6 @@ class="main__button-img"
 const removeFavBtnMark = '<button data-remove="action" data-id="${idDrink}" class="button__main-empty button__class js-removeBtn-mark"> Remove'
 const addfavorBtnMark = '<button data-add="action" data-id="${idDrink}" class="button__main-empty button__class js-AddBtn-mark"> Add to'
 
-function checkBtnStatus (id){
-  const localStorageData = localStorage.getItem('FAV_COCTAILS');
-  const localStorageDataRes = JSON.parse(localStorageData);
 
   console.log(localStorageDataRes)
   for (const coctail of localStorageDataRes) {   
@@ -52,7 +49,10 @@ function checkBtnStatus (id){
     else{    return false    
 }
   }
-}
-  
+
+  function checkBtnStatus (id){
+  const localStorageData = localStorage.getItem('FAV_COCTAILS');
+  const localStorageDataRes = JSON.parse(localStorageData);}
+
 
             // ${checkBtnStatus(idDrink)? removeFavBtnMark : addfavorBtnMark}
