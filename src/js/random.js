@@ -8,6 +8,58 @@ const spinnerRef = document.querySelector('.spinner-alert');
 let responseDrink = '';
 let allPromises = [];
 
+// Andrei
+console.log('rgrgr')
+divRef.addEventListener('click', onAddCardBtnClick);
+divRef.addEventListener('click', onRemCardBtnClick);
+divRef.addEventListener('click', onLearnCardBtnClick);
+
+function onAddCardBtnClick(e) {
+  if (!e.target.hasAttribute('data-add')) {
+    return;
+  }
+  const card = allPromises.filter(
+    coctail => coctail.idDrink === e.target.dataset.id
+  )[0];
+  addToLocalStCoctails(card);
+}
+
+function onRemCardBtnClick(e){
+  if (!e.target.hasAttribute('data-remove')) {
+    return;
+  }
+  remFromLocalStCoctails(e.target.dataset.id)
+}
+
+function onLearnCardBtnClick(e) {
+  if (!e.target.hasAttribute('data-learnmoreid')) {
+    return;
+  }
+  console.log(e.target.dataset.learnmoreid);
+}
+
+function remFromLocalStCoctails(coctailID) {
+  const localStorageData = localStorage.getItem('FAV_COCTAILS');
+  if (!localStorageData) {
+    return;
+  } else {
+    const localStorageDataRes = JSON.parse(localStorageData);
+    const favCoctArray = [];
+
+    for (const coctail of localStorageDataRes) {
+      if (coctail.idDrink === coctailID) {
+        continue;
+      }
+      favCoctArray.push(coctail);
+    }
+    localStorage.removeItem('FAV_COCTAILS');
+    localStorage.setItem('FAV_COCTAILS', JSON.stringify(favCoctArray));
+    location.reload();
+  }
+
+}
+// Andrei
+
 const windowScreen = window.screen.width;
 spinnerRef.classList.remove('visually-hidden-spinner');
 
@@ -74,6 +126,13 @@ function clearContainer() {
 
 // фильтрация промисей
 async function getRandomData(size) {
+    // Andrei
+    if (divRef.dataset.page === 'favorite-coctails') {
+      allPromises = arrayFromLStorage.arrayFromLStorage;
+      start(size);
+      return;
+    }
+    // Andrei  
   const promises = await getRandomCoctails(size);
   const data = await returnAllCard(promises);
   const fData = filterData(data);
@@ -97,3 +156,28 @@ async function start(number) {
   spinnerRef.classList.add('visually-hidden-spinner');
   addMurkup(create);
 }
+
+// Andrei
+export function addToLocalStCoctails({ strDrink, strDrinkThumb, idDrink }) {
+  const localStorageData = localStorage.getItem('FAV_COCTAILS');
+  const localStorageDataRes = JSON.parse(localStorageData);
+
+  if (!localStorageData || localStorageDataRes.length === 0) {
+    const favCoctArray = [
+      { strDrink: strDrink, strDrinkThumb: strDrinkThumb, idDrink: idDrink },
+    ];
+    localStorage.setItem('FAV_COCTAILS', JSON.stringify(favCoctArray));
+  } else {
+    const newLocal = localStorageDataRes.concat({
+      strDrink: strDrink,
+      strDrinkThumb: strDrinkThumb,
+      idDrink: idDrink,
+    });
+    localStorage.setItem('FAV_COCTAILS', JSON.stringify(newLocal));
+    console.log(newLocal);
+  }
+  arrayFromLStorage = localStorageData;
+
+  console.log(strDrink, strDrinkThumb, idDrink);
+}
+// Andrei
