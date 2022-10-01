@@ -11,7 +11,6 @@ export default function crateImageMarkUp(response) {
             <button data-learnmoreid="${idDrink}" class="button__main-full button__class">Learn more</button>
 
             ${checkBtnStatus(idDrink)} 
-            
 <span><svg
 class="main__button-img"
   width="21"
@@ -47,8 +46,8 @@ function checkBtnStatus (id){
   const localStorageData = localStorage.getItem('FAV_COCTAILS');
   const localStorageDataRes = JSON.parse(localStorageData);
    const checkBtnStat=localStorageDataRes.find(coctail =>coctail.idDrink === id)
-   if(checkBtnStat){return `<button data-remove="action" data-id="${id}" class="button__main-empty button__class js-removeBtn-mark"> Remove`}
-   return `<button data-add="action" data-id="${id}" class="button__main-empty button__class js-AddBtn-mark"> Add to`
+   if(checkBtnStat){return `<button data-actions ='remove' data-id="${id}" class="button__main-empty button__class js-removeBtn-mark"> Remove`}
+   return `<button data-actions ='add' data-id="${id}" class="button__main-empty button__class js-AddBtn-mark"> Add to`
 //   console.log(localStorageDataRes)
 //   for (const coctail of localStorageDataRes) {
 //     if(coctail.idDrink === id){return 'true'}

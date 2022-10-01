@@ -8,35 +8,50 @@ let responseDrink = '';
 let allPromises = [];
 
 // Andrei
-console.log(divRef.dataset)
 divRef.addEventListener('click', onAddCardBtnClick);
 divRef.addEventListener('click', onRemCardBtnClick);
 divRef.addEventListener('click', onLearnCardBtnClick);
 
-
 function onAddCardBtnClick(e) {
-  if (!e.target.hasAttribute('data-add')) {
+  if (e.target.dataset.actions !== 'add') {
     return;
   }
   const card = allPromises.filter(
     coctail => coctail.idDrink === e.target.dataset.id
   )[0];
-  addToLocalStCoctails(card);
+  // addToLocalStCoctails(card);
+  e.target.innerHTML = `  Remove 
+  <span><svg class="main__button-img" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.5 19L8.9775 17.6332C3.57 12.7978 0 9.60872 0 5.69482C0 2.50572 2.541 0 5.775 0C7.602 0 9.3555 0.838692 10.5 2.16403C11.6445 0.838692 13.398 0 15.225 0C18.459 0 21 2.50572 21 5.69482C21 9.60872 17.43 12.7978 12.0225 17.6436L10.5 19Z" fill="#FD5103"></path>
+    <path d="M10.5 17L9.2675 15.921C4.89 12.1035 2 9.58583 2 6.49591C2 3.9782 4.057 2 6.675 2C8.154 2 9.5735 2.66213 10.5 3.70845C11.4265 2.66213 12.846 2 14.325 2C16.943 2 19 3.9782 19 6.49591C19 9.58583 16.11 12.1035 11.7325 15.9292L10.5 17Z" fill="#FCFCFC"></path>
+  </svg></span>
+  <span><svg class="main__button-imgfull" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10.5 19L8.9775 17.6332C3.57 12.7978 0 9.60872 0 5.69482C0 2.50572 2.541 0 5.775 0C7.602 0 9.3555 0.838692 10.5 2.16403C11.6445 0.838692 13.398 0 15.225 0C18.459 0 21 2.50572 21 5.69482C21 9.60872 17.43 12.7978 12.0225 17.6436L10.5 19Z" fill="#FD5103"></path>
+  </svg></span>`;
+  e.target.dataset.actions='remove';
+
 }
 
-function onRemCardBtnClick(e){
-  if (!e.target.hasAttribute('data-remove')) {
+function onRemCardBtnClick(e) {
+  if ( e.target.dataset.actions !== 'remove') {
     return;
-  }  console.dir(e.target)
+  }
+  e.target.innerHTML = `  Add to 
+  <span><svg class="main__button-img" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.5 19L8.9775 17.6332C3.57 12.7978 0 9.60872 0 5.69482C0 2.50572 2.541 0 5.775 0C7.602 0 9.3555 0.838692 10.5 2.16403C11.6445 0.838692 13.398 0 15.225 0C18.459 0 21 2.50572 21 5.69482C21 9.60872 17.43 12.7978 12.0225 17.6436L10.5 19Z" fill="#FD5103"></path>
+    <path d="M10.5 17L9.2675 15.921C4.89 12.1035 2 9.58583 2 6.49591C2 3.9782 4.057 2 6.675 2C8.154 2 9.5735 2.66213 10.5 3.70845C11.4265 2.66213 12.846 2 14.325 2C16.943 2 19 3.9782 19 6.49591C19 9.58583 16.11 12.1035 11.7325 15.9292L10.5 17Z" fill="#FCFCFC"></path>
+  </svg></span>
+  <span><svg class="main__button-imgfull" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10.5 19L8.9775 17.6332C3.57 12.7978 0 9.60872 0 5.69482C0 2.50572 2.541 0 5.775 0C7.602 0 9.3555 0.838692 10.5 2.16403C11.6445 0.838692 13.398 0 15.225 0C18.459 0 21 2.50572 21 5.69482C21 9.60872 17.43 12.7978 12.0225 17.6436L10.5 19Z" fill="#FD5103"></path>
+  </svg></span>`;
 
-  remFromLocalStCoctails(e.target.dataset.id)
+  e.target.dataset.actions='add';
+
+  // remFromLocalStCoctails(e.target.dataset.id)
 }
 
 function onLearnCardBtnClick(e) {
   if (!e.target.hasAttribute('data-learnmoreid')) {
     return;
   }
-  console.log(e.target.dataset.learnmoreid);
 }
 
 function remFromLocalStCoctails(coctailID) {
@@ -57,7 +72,6 @@ function remFromLocalStCoctails(coctailID) {
     localStorage.setItem('FAV_COCTAILS', JSON.stringify(favCoctArray));
     location.reload();
   }
-
 }
 // Andrei
 
@@ -127,13 +141,13 @@ function clearContainer() {
 
 // фильтрация промисей
 async function getRandomData(size) {
-    // Andrei
-    if (divRef.dataset.page === 'favorite-coctails') {
-      allPromises = JSON.parse(localStorage.getItem('FAV_COCTAILS'));
-      start(size);
-      return;
-    }
-    // Andrei  
+  // Andrei
+  if (divRef.dataset.page === 'favorite-coctails') {
+    allPromises = JSON.parse(localStorage.getItem('FAV_COCTAILS'));
+    start(size);
+    return;
+  }
+  // Andrei
   const promises = await getRandomCoctails(size);
   const data = await returnAllCard(promises);
   const fData = filterData(data);
@@ -175,9 +189,7 @@ export function addToLocalStCoctails({ strDrink, strDrinkThumb, idDrink }) {
       idDrink: idDrink,
     });
     localStorage.setItem('FAV_COCTAILS', JSON.stringify(newLocal));
-    console.log(newLocal);
   }
 
-  console.log(strDrink, strDrinkThumb, idDrink);
 }
 // Andrei
