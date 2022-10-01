@@ -10,13 +10,15 @@ customSelect.addEventListener('click', onClickCustomSelect);
 // dropDown.addEventListener('click', onClickListMobi);
 
 function onClickCustomSelect() {
+
     dropDown.classList.toggle('is-hidden');
     listMobi.addEventListener('click', onClickList);
 }
-
+customSelect.classList.remove('change-color');
 function onClickList(event) {
-    
+    customSelect.classList.add('change-color');
     const result = event.target.dataset.value;
     selectText.textContent = result;
+    dropDown.classList.toggle('is-hidden');
     return onClickBtn(event);
 }
