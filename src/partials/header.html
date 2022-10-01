@@ -63,16 +63,16 @@
       </svg>
     </button>
 
-    <ul class="header-switch">
-      <li class="header-light">Light</li>
-      <li>
-        <label class="switch">
+    <div class="header-switch">
+      <span class="header-light">Light</span>
+      <span>
+        <label class="switcher">
           <input type="checkbox" />
-          <span class="slider round"></span>
+          <span class="dark-button"></span>
         </label>
-      </li>
-      <li class="header-dark">Dark</li>
-    </ul>
+      </span>
+      <span class="header-dark">Dark</span>
+    </div>
 
     <!-- Модальное окно header -->
     <div class="header__modal is-hidden" data-header-modal>
@@ -85,6 +85,16 @@
         >
           <img src="./images/COCKTAILS.png" alt="logo" />
         </a>
+        <div class="header-switch__burger">
+          <span class="header-light">Light</span>
+          <span>
+            <label class="switcher">
+              <input type="checkbox" />
+              <span class="dark-button"></span>
+            </label>
+          </span>
+          <span class="header-dark">Dark</span>
+        </div>
 
         <button
           type="button"
