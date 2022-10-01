@@ -1,6 +1,7 @@
 export default function crateImageMarkUp(response) {
   return response
     .map(({ strDrinkThumb, strDrink, idDrink }) => {
+      // console.log(idDrink)
       return `<div  class="main__container">
         <img width='325px' height='325px' class="main__img" src="${strDrinkThumb}" alt="negroni" />
         <div class="main__text-container">
@@ -9,7 +10,7 @@ export default function crateImageMarkUp(response) {
 
             <button data-learnmoreid="${idDrink}" class="button__main-full button__class">Learn more</button>
 
-            <button data-add="action" data-id="${idDrink}" class="button__main-empty button__class "> Add to
+            ${checkBtnStatus(idDrink)} 
             
 <span><svg
 class="main__button-img"
@@ -42,17 +43,19 @@ class="main__button-img"
 const removeFavBtnMark = '<button data-remove="action" data-id="${idDrink}" class="button__main-empty button__class js-removeBtn-mark"> Remove'
 const addfavorBtnMark = '<button data-add="action" data-id="${idDrink}" class="button__main-empty button__class js-AddBtn-mark"> Add to'
 
-
-  console.log(localStorageDataRes)
-  for (const coctail of localStorageDataRes) {   
-    if(coctail.idDrink === id){return true}
-    else{    return false    
-}
-  }
-
-  function checkBtnStatus (id){
+function checkBtnStatus (id){
   const localStorageData = localStorage.getItem('FAV_COCTAILS');
-  const localStorageDataRes = JSON.parse(localStorageData);}
-
+  const localStorageDataRes = JSON.parse(localStorageData);
+   const checkBtnStat=localStorageDataRes.find(coctail =>coctail.idDrink === id)
+   if(checkBtnStat){return `<button data-remove="action" data-id="${id}" class="button__main-empty button__class js-removeBtn-mark"> Remove`}
+   return `<button data-add="action" data-id="${id}" class="button__main-empty button__class js-AddBtn-mark"> Add to`
+//   console.log(localStorageDataRes)
+//   for (const coctail of localStorageDataRes) {
+//     if(coctail.idDrink === id){return 'true'}
+//     else{    return 'false'    
+// }
+//   }
+}
+  
 
             // ${checkBtnStatus(idDrink)? removeFavBtnMark : addfavorBtnMark}

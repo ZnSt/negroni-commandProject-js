@@ -27,7 +27,8 @@ function onAddCardBtnClick(e) {
 function onRemCardBtnClick(e){
   if (!e.target.hasAttribute('data-remove')) {
     return;
-  }
+  }  console.dir(e.target)
+
   remFromLocalStCoctails(e.target.dataset.id)
 }
 
