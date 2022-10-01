@@ -7,8 +7,7 @@ import * as arrayFromLStorage from './addCoctToFav';
 // Andrei
 
 const divRef = document.querySelector('.main__flex');
-console.log(divRef);
-
+const spinnerRef = document.querySelector('.spinner-alert');
 let responseDrink = '';
 let allPromises = [];
 
@@ -69,6 +68,7 @@ function remFromLocalStCoctails(coctailID) {
 // Andrei
 
 const windowScreen = window.screen.width;
+spinnerRef.classList.remove('visually-hidden-spinner');
 
 if (windowScreen < 768) {
   getRandomData(3);
@@ -112,14 +112,17 @@ function checkSize(e) {
 
   if (screenWidth < 768) {
     clearContainer();
+
     start(3);
   }
   if (screenWidth >= 768 && screenWidth < 1280) {
     clearContainer();
+
     start(6);
   }
   if (screenWidth >= 1280) {
     clearContainer();
+
     start(12);
   }
 }
@@ -159,6 +162,7 @@ async function start(number) {
   renderArray.splice(number, allPromises.length);
   //   console.log('allPromises :>> ', allPromises);
   const create = await crateImageMarkUp(renderArray);
+  spinnerRef.classList.add('visually-hidden-spinner');
   addMurkup(create);
 }
 
