@@ -71,19 +71,19 @@ export function createIngredientMarkup(response = []) {
     })
     .join('');
 }
-function add(markupString) {
+export function add(markupString) {
   divs.insertAdjacentHTML('afterbegin', markupString);
 }
 
-getElement('vodka').then(data => {
-  clearMarkupModal(divs);
-  dataIngredient = data.ingredients;
-  const markup = createIngredientMarkup(dataIngredient);
-  add(markup);
-  window.addEventListener('keydown', onEscapeBtnPush);
-});
+// getElement('vodka').then(data => {
+//   clearMarkupModal(divs);
+//   dataIngredient = data.ingredients;
+//   const markup = createIngredientMarkup(dataIngredient);
+//   add(markup);
+//   window.addEventListener('keydown', onEscapeBtnPush);
+// });
 
-function clearMarkupModal(element) {
+export function clearMarkupModal(element) {
   element.innerHTML = '';
 }
 
@@ -152,7 +152,7 @@ divs.addEventListener('click', onClickBtnAdd);
 divs.addEventListener('click', closeBackdrop);
 
 
-function onEscapeBtnPush (event) {
+export function onEscapeBtnPush (event) {
   if (event.code !== 'Escape') {
     return;
   }
