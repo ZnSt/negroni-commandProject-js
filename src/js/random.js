@@ -13,7 +13,6 @@ divRef.addEventListener('click', onAddCardBtnClick);
 divRef.addEventListener('click', onRemCardBtnClick);
 divRef.addEventListener('click', onLearnCardBtnClick);
 
-const arrayFromLStorage =''
 
 function onAddCardBtnClick(e) {
   if (!e.target.hasAttribute('data-add')) {
@@ -177,7 +176,6 @@ export function addToLocalStCoctails({ strDrink, strDrinkThumb, idDrink }) {
     localStorage.setItem('FAV_COCTAILS', JSON.stringify(newLocal));
     console.log(newLocal);
   }
-  arrayFromLStorage = localStorageData;
 
   console.log(strDrink, strDrinkThumb, idDrink);
 }

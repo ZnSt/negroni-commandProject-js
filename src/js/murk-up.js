@@ -9,7 +9,7 @@ export default function crateImageMarkUp(response) {
 
             <button data-learnmoreid="${idDrink}" class="button__main-full button__class">Learn more</button>
 
-            <button data-add="action" data-id="${idDrink}" class="button__main-empty button__class js-AddBtn-mark"> Add to
+            <button data-add="action" data-id="${idDrink}" class="button__main-empty button__class "> Add to
             
 <span><svg
 class="main__button-img"
