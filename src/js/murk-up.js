@@ -47,7 +47,7 @@ function checkBtnStatus (id){
   const localStorageDataRes = JSON.parse(localStorageData);
 
   console.log(localStorageDataRes)
-  for (const coctail of localStorageDataRes) {
+  for (const coctail of localStorageDataRes) {   
     if(coctail.idDrink === id){return true}
     else{    return false    
 }
