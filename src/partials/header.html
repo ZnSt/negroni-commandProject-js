@@ -11,14 +11,18 @@
             class="header__nav"
             href="./index.html"
             target="_blank"
-            rel="noreferrer noopener nofollow">Home</a>
+            rel="noreferrer noopener nofollow"
+            >Home</a
+          >
         </li>
         <li class="header__nav-item">
           <a
             class="header__nav favorite"
             href=""
             target="_blank"
-            rel="noreferrer noopener nofollow">Favorite</a>
+            rel="noreferrer noopener nofollow"
+            >Favorite</a
+          >
 
           <ul class="favorite-div none">
             <li class="favorite-div-item top">
@@ -26,11 +30,14 @@
                 >Favorite cocktails</a>
             </li>
             <li class="favorite-div-item bottom">
-              <a href="./favor-ingreds.html" target="_blank" rel="noreferrer noopener nofollow"
-                >Favorite ingredients</a>
+              <a
+                href="./favor-ingreds.html"
+                target="_blank"
+                rel="noreferrer noopener nofollow"
+                >Favorite ingredients</a
+              >
             </li>
           </ul>
-
         </li>
       </ul>
     </nav>
@@ -41,7 +48,12 @@
           <use href="./images/svg/symbol-defs.svg#icon-search"></use>
         </svg>
       </button>
-      <input type="text" name="coctailName" placeholder="Search" class="header__input" />
+      <input
+        type="text"
+        name="coctailName"
+        placeholder="Search"
+        class="header__input"
+      />
     </form>
 
     <button class="header__open-modal-btn" type="button" data-header-modal-open>
@@ -49,6 +61,17 @@
         <use href="./images/svg/symbol-defs.svg#icon-menu"></use>
       </svg>
     </button>
+
+    <div class="header-switch">
+      <span class="header-light">Light</span>
+      <span>
+        <label class="switcher">
+          <input data-switcher-desktop type="checkbox" />
+          <span class="dark-button"></span>
+        </label>
+      </span>
+      <span class="header-dark">Dark</span>
+    </div>
 
     <!-- Модальное окно header -->
     <div class="header__modal is-hidden" data-header-modal>
@@ -61,6 +84,16 @@
         >
           <img src="./images/COCKTAILS.png" alt="logo" />
         </a>
+        <div class="header-switch__burger">
+          <span class="header-light">Light</span>
+          <span>
+            <label class="switcher">
+              <input type="checkbox" />
+              <span class="dark-button"></span>
+            </label>
+          </span>
+          <span class="header-dark">Dark</span>
+        </div>
 
         <button
           type="button"
@@ -80,7 +113,12 @@
           </svg>
         </button>
 
-        <input type="text" name="coctailName" placeholder="Search" class="header__modal-input" />
+        <input
+          type="text"
+          name="coctailName"
+          placeholder="Search"
+          class="header__modal-input"
+        />
       </form>
 
       <nav>
@@ -116,7 +154,10 @@
                 >
               </li>
               <li class="favorite-div-item bottom">
-                <a href="./favor-ingreds.html" target="_blank" rel="noreferrer noopener nofollow"
+                <a
+                  href="./favor-ingreds.html"
+                  target="_blank"
+                  rel="noreferrer noopener nofollow"
                   >Favorite ingredients</a
                 >
               </li>
