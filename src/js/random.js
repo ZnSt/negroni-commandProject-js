@@ -2,17 +2,18 @@ import crateImageMarkUp from './murk-up';
 import fetchRandomCocktail from './fetch';
 import addMurkup from './add-murk-up';
 
-// const divRef = document.querySelector('.main__flex');
 const divRef = document.querySelector('.main__flex');
 const spinnerRef = document.querySelector('.spinner-alert');
 let responseDrink = '';
 let allPromises = [];
 
 // Andrei
-console.log(divRef)
+console.log(divRef.dataset)
 divRef.addEventListener('click', onAddCardBtnClick);
 divRef.addEventListener('click', onRemCardBtnClick);
 divRef.addEventListener('click', onLearnCardBtnClick);
+
+const arrayFromLStorage =''
 
 function onAddCardBtnClick(e) {
   if (!e.target.hasAttribute('data-add')) {
@@ -128,7 +129,7 @@ function clearContainer() {
 async function getRandomData(size) {
     // Andrei
     if (divRef.dataset.page === 'favorite-coctails') {
-      allPromises = arrayFromLStorage.arrayFromLStorage;
+      allPromises = JSON.parse(localStorage.getItem('FAV_COCTAILS'));
       start(size);
       return;
     }
