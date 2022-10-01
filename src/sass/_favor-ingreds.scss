@@ -1,6 +1,17 @@
-@import './vars';
-
 .favor-ingreds {
+  padding-top: 60px;
+  padding-bottom: 20px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 60px;
+    padding-bottom: 32px;
+    // min-height: 100vh;
+  }
+  @media screen and (min-width: 1280px) {
+    padding-top: 69px;
+    // min-height: calc(100vh - 60px);
+  }
+
   &__title {
     text-align: center;
     font-family: $primary-font;
@@ -121,7 +132,7 @@
   }
 }
 
-.button-orange {
+.button-rusty {
   width: 108px;
 
   color: #ffffff;
@@ -141,6 +152,7 @@
   &:focus {
     background-color: $btn-hover;
     color: $main-orange;
+    border: 1px solid $main-orange;
     outline: none;
   }
 }
@@ -157,16 +169,14 @@
   @media screen and (min-width: 1280px) {
     width: 141px;
   }
-  color: $main-orange;
+  color: $accent-orange;
   background-color: transparent;
 
   transition: all $transition-time $transition-function;
 
   &:hover,
   &:focus {
-    // background-color: $btn-hover;
-    // color: $main-orange;
-    background-color: $main-orange;
+    background-color: $accent-orange;
     color: $btn-hover;
     outline: none;
   }
