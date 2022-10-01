@@ -9,7 +9,7 @@ let responseDrink = '';
 let allPromises = [];
 
 // Andrei
-console.log('rgrgr')
+console.log(divRef)
 divRef.addEventListener('click', onAddCardBtnClick);
 divRef.addEventListener('click', onRemCardBtnClick);
 divRef.addEventListener('click', onLearnCardBtnClick);
