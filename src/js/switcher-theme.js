@@ -8,5 +8,3 @@ function getThemefromLocalSt(){
     const localStorageDataRes = JSON.parse(localStorage.getItem('DESKTOP_THEME'));
     console.log(localStorageDataRes)
 }
-addThemeToLocalSt('theme')
-getThemefromLocalSt()
