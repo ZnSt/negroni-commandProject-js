@@ -1,5 +1,9 @@
 @import './vars';
 
+.theme-color {
+  background-color: var(--primary-bg-color);
+}
+
 .favor-ingreds {
   &__title {
     text-align: center;

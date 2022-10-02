@@ -7,7 +7,7 @@
   font-size: 22px;
   line-height: 1.9;
 
-  color: $text-color;
+  color: var(--primary-text-color);
 
   @media screen and (min-width: 768px) {
     margin-bottom: 56px;
@@ -63,7 +63,7 @@
   font-weight: 900;
   font-size: 26px;
   line-height: 1.6;
-  color: $text-color;
+  color: var(--primary-text-color);
 
   @media screen and (min-width: 768px) {
     font-size: 28px;
@@ -79,6 +79,7 @@
   }
 }
 .main {
+  background-color: var(--primary-bg-color);
   padding-top: 20px;
   padding-bottom: 20px;
   @media screen and (min-width: 768px) {
