@@ -333,8 +333,13 @@
   left: 40px;
 }
 
+.change-bgcolor {
+  background-color: $main-orange; 
+}
+
 .change-color {
-  background-color: $main-orange;
   color: $primary-bg-color;
-  // fill: $primary-bg-color;
+}
+.change-icon-color {
+  fill: $primary-bg-color;
 }
