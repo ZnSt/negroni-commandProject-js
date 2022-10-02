@@ -9,10 +9,9 @@ ulContainer.addEventListener('click', onClickBtn);
 
 export default async function onClickBtn(event) {
   const value = event.target.dataset.value.toLowerCase();
-  if (event.target.nodeName !== 'LI') {
+   if (event.target.nodeName !== 'LI') {
     return;
   }
-
   try {
     const responseData = await API.fetchGetData(value);
     console.log(responseData);
