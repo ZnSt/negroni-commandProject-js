@@ -192,3 +192,4 @@ function closeBackdropCoct (event){
 
 // let modCoctailBtnClose = document.querySelector(".mod__coctail--btn__close")
 //   modCoctailBtnClose.addEventListener('click', closeModalBtnCocktail)
+// для коммита
