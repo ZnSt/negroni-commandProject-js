@@ -1,1 +1,0 @@
-{"mappings":"oeAAAA,EAAA,S","sources":["src/favor-coctails.js"],"sourcesContent":["import './js/header';\nimport './js/modal_cocktail';\nimport './js/modalIng';\nimport './js/header';\n// import './js/hero';\nimport './js/random';\nimport './js/modalIng';\nimport './js/scroll-up.js/scroll-up';\n"],"names":["parcelRequire"],"version":3,"file":"favor-coctails.d76dd4b3.js.map"}
