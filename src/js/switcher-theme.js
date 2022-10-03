@@ -1,20 +1,32 @@
 const inputSwEl = document.querySelector('.dark-button');
+const dataInput = document.querySelector('[data-switcher-desktop]');
 
-inputSwEl.addEventListener('click', event => {
+inputSwEl.addEventListener('click', () => {
   const currentTheme = document.documentElement.dataset.theme;
+  addThemeToLocalSt(currentTheme);
   if (currentTheme === 'light') {
     document.documentElement.setAttribute('data-theme', 'dark');
+    addThemeToLocalSt('dark');
   } else {
     document.documentElement.setAttribute('data-theme', 'light');
+    addThemeToLocalSt('light');
   }
 });
 
-const KEY = 'theme';
-
-function getItem() {
-  localStorage.getItem(KEY);
+function addThemeToLocalSt(theme) {
+  localStorage.setItem('DESKTOP_THEME', JSON.stringify(theme));
 }
 
-function setItem(value) {
-  localStorage.setItem(KEY, value);
+function getThemefromLocalSt() {
+  return JSON.parse(localStorage.getItem('DESKTOP_THEME'));
+}
+console.log('ojdpvojd');
+
+export function whyTheme() {
+  document.documentElement.setAttribute('data-theme', getThemefromLocalSt());
+  if (getThemefromLocalSt() === 'dark') {
+    dataInput.checked = true;
+  } else {
+    dataInput.checked = false;
+  }
 }

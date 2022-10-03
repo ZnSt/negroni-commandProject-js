@@ -169,7 +169,7 @@ async function start(number) {
   //   console.log('allPromises :>> ', allPromises);
   const create = await crateImageMarkUp(renderArray);
   spinnerRef.classList.add('visually-hidden-spinner');
-  addMurkup(create);
+  addMurkup(create);  
 }
 
 // Andrei
