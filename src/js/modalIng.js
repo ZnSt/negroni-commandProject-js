@@ -15,6 +15,10 @@ export async function getElement(name) {
 }
 
 export function createIngredientMarkup(response = []) {
+  const clearIngrMarkup = document.querySelector('.modalw2');
+  if (clearIngrMarkup) {
+    clearIngrMarkup.remove();
+  }
   const getIngredientOnLocal = JSON.parse(
     localStorage.getItem('localIngredient')
   );
@@ -75,19 +79,11 @@ export function add(markupString) {
   divs.insertAdjacentHTML('afterbegin', markupString);
 }
 
-// getElement('vodka').then(data => {
-//   clearMarkupModal(divs);
-//   dataIngredient = data.ingredients;
-//   const markup = createIngredientMarkup(dataIngredient);
-//   add(markup);
-//   window.addEventListener('keydown', onEscapeBtnPush);
-// });
-
 export function clearMarkupModal(element) {
   element.innerHTML = '';
 }
 
-function save(key, value) {
+export function save(key, value) {
   try {
     const serializedState = JSON.stringify(value);
     localStorage.setItem(key, serializedState);
@@ -96,7 +92,15 @@ function save(key, value) {
   }
 }
 
-function load(key) {
+// getElement('vodka').then(data => {
+//   clearMarkupModal(divs);
+//   dataIngredient = data.ingredients;
+//   const markup = createIngredientMarkup(dataIngredient);
+//   add(markup);
+//   window.addEventListener('keydown', onEscapeBtnPush);
+// });
+
+export function load(key) {
   try {
     const serializedState = localStorage.getItem(key);
     return serializedState === null ? undefined : JSON.parse(serializedState);
@@ -131,7 +135,6 @@ function onClickBtnAdd(e) {
     save('localIngredient', loadObj);
     btn1.textContent = 'Remove from favorite';
   }
-  
 }
 
 function cheackLocalStorage(id) {
@@ -151,23 +154,21 @@ function onCloseBtnFunc() {
 divs.addEventListener('click', onClickBtnAdd);
 divs.addEventListener('click', closeBackdrop);
 
-
-export function onEscapeBtnPush (event) {
+export function onEscapeBtnPush(event) {
   if (event.code !== 'Escape') {
     return;
   }
   onCloseBtnFunc();
   window.removeEventListener('keydown', onEscapeBtnPush);
-};
+}
 
-function closeBackdrop (event){
+function closeBackdrop(event) {
   if (event.currentTarget !== event.target) {
     return;
   }
 
-
-    if (!event.target.classList.contains('modal2')) {
-      return;
-    }
+  if (!event.target.classList.contains('modal2')) {
+    return;
+  }
   onCloseBtnFunc();
-};
+}

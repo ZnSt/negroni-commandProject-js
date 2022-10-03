@@ -5,6 +5,8 @@ import { divRef } from './add-murk-up';
 
 import addMurkup from './add-murk-up';
 
+import { wichDataToUse, numberOfCards } from './random';
+
 const refs = {
   openModalBtn: document.querySelector('[data-header-modal-open]'),
   closeModalBtn: document.querySelector('[data-header-modal-close]'),
@@ -103,7 +105,8 @@ async function amountData(coctaillNameVal) {
     const data = await getCoctail(coctaillNameVal);
     //divRef.innerHTML = '';
     errorDivEl.classList.add('error-hidden');
-    addMurkup(crateImageMarkUp(data.drinks));
+    // addMurkup(crateImageMarkUp(data.drinks));
+    wichDataToUse(numberOfCards, data.drinks);
     console.log(data.drinks);
   } catch (error) {
     // console.log(error.massage);
