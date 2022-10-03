@@ -20,7 +20,7 @@ export default async function onClickBtn(event) {
     wichDataToUse(numberOfCards,responseData.drinks)
 
     const markup = crateImageMarkUp(responseData.drinks);
-console.log(responseData.drinks)
+// console.log(responseData.drinks)
 
     // renderContainer.innerHTML = '';
     // renderContainer.insertAdjacentHTML('beforeend', markup);
