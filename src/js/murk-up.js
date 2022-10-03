@@ -8,7 +8,9 @@ export default function crateImageMarkUp(response) {
           <h3 class="main__title-second">${strDrink}</h3>
           <div class="main__button-center">
 
+
             <button data-learnmoreid="${idDrink}" class="button__main-full button__class">Learn more</button>
+
 
             ${checkBtnStatus(idDrink)} 
 <span><svg
