@@ -5,6 +5,6 @@ export default async function fetchRandomCocktail() {
   );
 
   responseDrink = res?.data?.drinks[0];
-  //   console.log(responseDrink.idDrink);
+    // console.log(responseDrink.idDrink);
   return responseDrink;
 }
