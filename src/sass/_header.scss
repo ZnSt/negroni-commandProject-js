@@ -2,6 +2,7 @@
   background-color: var(--primary-bg-color);
 }
 .header {
+  background-color: transparent;
   padding-top: 20px;
 
   display: flex;
@@ -106,11 +107,11 @@
   border: 1px solid var(--accent-color);
 }
 
-.favorite-div-item.top {
+.favorite-div-item.top a {
   border-radius: 4px 4px 0px 0px;
 }
 
-.favorite-div-item.bottom {
+.favorite-div-item.bottom a {
   border-radius: 0px 0px 4px 4px;
 }
 
@@ -220,6 +221,13 @@ a {
   @include comp {
     font-size: 18px;
     line-height: 1.33;
+  }
+}
+
+.header__nav.favorite {
+  @include comp {
+    display: block;
+    width: 210px;
   }
 }
 
