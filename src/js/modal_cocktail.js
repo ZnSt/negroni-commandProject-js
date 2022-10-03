@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { getElement, createIngredientMarkup, add, clearMarkupModal, onEscapeBtnPush } from './modalIng';
-
+import { getElement, createIngredientMarkup, add, clearMarkupModal, onEscapeBtnPush, save, load } from './modalIng';
+// import { addToLocalStCoctails } from './random' 
 //1-вся модалка; 2-кнопка add
 const refs = {
   modCoctailWindow: document.querySelector(".mod__coctail"),
@@ -8,7 +8,7 @@ const refs = {
 };
 
 let id
-
+let dataCoct = []
 // вся модалка №2
 const divs = document.querySelector('.modal2');
 
@@ -30,10 +30,17 @@ divContainerRef.addEventListener('click', onClickToCard)
 // функция которая получает и возвращает IdDrinks по клику на кнопку Learn more
 function onClickToCard(event) {
   const learMoreBtn = event.target.closest('.button__main-full')
+  if (event.target.nodeName !== 'BUTTON') {
+    return;
+  }
+  // addToLocalStCoctails()
   id = Number(learMoreBtn.dataset.learnmoreid)
+  
   console.log(id)
   refs.modCoctailWindow.classList.toggle('is-hidden')
   openModalCoctWind(id).then(data => {
+    dataCoct = data.drinks
+    console.log(dataCoct[0])
   const dataCocktails = data.drinks
   const marcup = createMarkupCoct(dataCocktails)
     addMarcup(marcup)
@@ -42,8 +49,51 @@ function onClickToCard(event) {
     window.addEventListener('keydown', onEscapeBtnPushCoct);
     const closeBtn = document.querySelector('.mod__coctail--btn__close')
     closeBtn.addEventListener('click', onCloseBtnFuncCoct)
+    console.log(dataCoct[0])
+  const numberId = dataCoct[0].idDrink;
+  console.log(numberId)
+  const btn1 = document.querySelector('.mod__coctail--button--add');
+
+  if (cheackCocktLocalStorage(numberId)) {
+    let loadObj = load('FAV_COCTAILS');
+    loadObj = loadObj.filter(
+      ingredients => ingredients.idDrink !== numberId
+    );
+    save('FAV_COCTAILS', loadObj);
+    btn1.textContent = 'Add to favorite';
+  } else {
+    let loadObj = load('FAV_COCTAILS');
+    loadObj.push(...dataCoct);
+    save('FAV_COCTAILS', loadObj);
+    btn1.textContent = 'Remove from favorite';
+  }
   })
+  
 }
+
+
+
+
+function cheackCocktLocalStorage(id) {
+  const currentObj = load('FAV_COCTAILS');
+  if (currentObj) {
+    return !!currentObj.find(ingredients => ingredients.idDrink === id);
+  } else {
+    save('FAV_COCTAILS', []);
+  }
+  return false;
+}
+
+
+
+// функция - закрытие модалки на кнопке Escape
+function onEscapeBtnPushCoct (event) {
+  if (event.code !== 'Escape') {
+    return;
+  }
+  onCloseBtnFuncCoct();
+  window.removeEventListener('keydown', onEscapeBtnPushCoct);
+};
 
 //функция добавляет разметку
 function addMarcup(marcupString) {
@@ -64,15 +114,6 @@ function openSecondModal(event) {
   window.addEventListener('keydown', onEscapeBtnPush);
 });
 }
-
-// функция - закрытие модалки на кнопке Escape
-function onEscapeBtnPushCoct (event) {
-  if (event.code !== 'Escape') {
-    return;
-  }
-  onCloseBtnFuncCoct();
-  window.removeEventListener('keydown', onEscapeBtnPushCoct);
-};
 
 //функция оставляет количество ингридиентов
 function andrei(elem){
