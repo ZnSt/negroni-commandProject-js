@@ -1,6 +1,10 @@
 import crateImageMarkUp from './murk-up';
 import fetchRandomCocktail from './fetch';
 import addMurkup from './add-murk-up';
+// Andrei
+import * as arrayFromLStorage from './addCoctToFav';
+// import {addToLocalStCoctails} from './addCoctToFav'
+// Andrei
 
 const divRef = document.querySelector('.main__flex');
 const spinnerRef = document.querySelector('.spinner-alert');
@@ -89,19 +93,25 @@ function remFromLocalStCoctails(coctailID) {
     localStorage.setItem('FAV_COCTAILS', JSON.stringify(favCoctArray));
   }
 }
+export let numberOfCards = 0;
 // Andrei
 
 const windowScreen = window.screen.width;
 spinnerRef.classList.remove('visually-hidden-spinner');
 
 if (windowScreen < 768) {
-  getRandomData(3);
+  numberOfCards = 3;
+  wichDataToUse(numberOfCards);
 }
 if (windowScreen >= 768 && windowScreen < 1280) {
-  getRandomData(6);
+  numberOfCards = 6;
+
+  wichDataToUse(numberOfCards);
 }
 if (windowScreen >= 1280) {
-  getRandomData(12);
+  numberOfCards = 9;
+
+  wichDataToUse(numberOfCards);
 }
 
 //запись данных в пустой массив
@@ -137,50 +147,63 @@ function checkSize(e) {
   if (screenWidth < 768) {
     clearContainer();
 
-    start(3);
+    start(numberOfCards);
   }
   if (screenWidth >= 768 && screenWidth < 1280) {
     clearContainer();
 
-    start(6);
+    start(numberOfCards);
   }
   if (screenWidth >= 1280) {
     clearContainer();
 
-    start(12);
+    start(numberOfCards);
   }
 }
 
 function clearContainer() {
   divRef.innerHTML = '';
 }
-
-// фильтрация промисей
-async function getRandomData(size) {
-  // Andrei
+export function wichDataToUse(numberOfCards, data) {
   if (divRef.dataset.page === 'favorite-coctails') {
     allPromises = JSON.parse(localStorage.getItem('FAV_COCTAILS'));
-    start(size);
+    console.log('favorite-coctails  allPromises', allPromises);
+
+    start(numberOfCards);
     return;
   }
+  if (data) {
+    allPromises = data;
+    start(numberOfCards);
+    console.log('hasdata  allPromises', allPromises);
+    return;
+  }
+
+  getRandomData(numberOfCards);
+  console.log('getRandomData  allPromises', allPromises);
+
+}
+
+// фильтрация промисей
+async function getRandomData(numberOfCards) {
   // Andrei
-  const promises = await getRandomCoctails(size);
+
+  // Andrei
+  const promises = await getRandomCoctails(numberOfCards);
   const data = await returnAllCard(promises);
   const fData = filterData(data);
 
   allPromises = [...fData];
-  start(size);
-  //   fData.forEach(item => allPromises.push(item));
-  //   if (fData.length < size) {
-  //     const resultSize = size - fData.length;
-  //     start(resultSize, allPromises);
-  //   }
-  //   return allPromises.slice(0, size);
-  // }
+  // console.log(allPromises);
+
+  start(numberOfCards);
 }
 
 async function start(number) {
+  console.log('start allPromises', allPromises);
+
   const renderArray = [...allPromises];
+
   renderArray.splice(number, allPromises.length);
   //   console.log('allPromises :>> ', allPromises);
   const create = await crateImageMarkUp(renderArray);
