@@ -1,15 +1,17 @@
 export default function crateImageMarkUp(response) {
   return response
     .map(({ strDrinkThumb, strDrink, idDrink }) => {
-      return `<div  class="main__container" data-id="${idDrink}">
+      // console.log(idDrink)
+      return `<div  class="main__container">
         <img width='325px' height='325px' class="main__img" src="${strDrinkThumb}" alt="negroni" />
         <div class="main__text-container">
           <h3 class="main__title-second">${strDrink}</h3>
           <div class="main__button-center">
 
             <button data-learnmoreid="${idDrink}" class="button__main-full button__class">Learn more</button>
-            <button data-add="action" data-id="${idDrink}" class="button__main-empty button__class js-AddBtn-mark"> Add to            
-            <span><svg
+
+            ${checkBtnStatus(idDrink)} 
+<span><svg
 class="main__button-img"
   width="21"
   height="19"
@@ -25,9 +27,6 @@ class="main__button-img"
     fill="#FCFCFC"
   />
 </svg></span>
-<span><svg class="main__button-imgfull" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M10.5 19L8.9775 17.6332C3.57 12.7978 0 9.60872 0 5.69482C0 2.50572 2.541 0 5.775 0C7.602 0 9.3555 0.838692 10.5 2.16403C11.6445 0.838692 13.398 0 15.225 0C18.459 0 21 2.50572 21 5.69482C21 9.60872 17.43 12.7978 12.0225 17.6436L10.5 19Z" fill="#FD5103"/>
-</svg></span>
             </button>
           </div>
         </div>
@@ -37,20 +36,23 @@ class="main__button-img"
     .join('');
 }
 
-const removeFavBtnMark = '<button data-remove="action" data-id="${idDrink}" class="button__main-empty button__class js-removeBtn-mark"> Remove'
-const addfavorBtnMark = '<button data-add="action" data-id="${idDrink}" class="button__main-empty button__class js-AddBtn-mark"> Add to'
+const removeFavBtnMark =
+  '<button data-atribute="ok" data-remove="action" data-id="${idDrink}" class="button__main-empty button__class js-removeBtn-mark"> Remove';
+const addfavorBtnMark =
+  '<button data-atribute="ok" data-add="action" data-id="${idDrink}" class="button__main-empty button__class js-AddBtn-mark"> Add to';
 
-function checkBtnStatus (id){
+function checkBtnStatus(id) {
   const localStorageData = localStorage.getItem('FAV_COCTAILS');
   const localStorageDataRes = JSON.parse(localStorageData);
-
-  console.log(localStorageDataRes)
-  for (const coctail of localStorageDataRes) {
-    if(coctail.idDrink === id){return true}
-    else{    return false    
-}
+  if (localStorage.getItem('FAV_COCTAILS') === null) {
+    return `<button data-atribute="ok" data-actions ='add' data-id="${id}" class="button__main-empty button__class js-AddBtn-mark"> Add to`;
   }
+  const checkBtnStat = localStorageDataRes.find(
+    coctail => coctail.idDrink === id
+  );
+  if (checkBtnStat) {
+    return `<button data-atribute="ok" data-actions ='remove' data-id="${id}" class="button__main-empty button__class js-removeBtn-mark"> Remove`;
+  }
+  return `<button data-atribute="ok" data-actions ='add' data-id="${id}" class="button__main-empty button__class js-AddBtn-mark"> Add to`;
 }
-  
-
-            // ${checkBtnStatus(idDrink)? removeFavBtnMark : addfavorBtnMark}
+// ${checkBtnStatus(idDrink)? removeFavBtnMark : addfavorBtnMark}

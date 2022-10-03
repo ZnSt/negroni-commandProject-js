@@ -71,18 +71,19 @@ export function createIngredientMarkup(response = []) {
     })
     .join('');
 }
-function add(markupString) {
+export function add(markupString) {
   divs.insertAdjacentHTML('afterbegin', markupString);
 }
 
-getElement('vodka').then(data => {
-  clearMarkupModal(divs);
-  dataIngredient = data.ingredients;
-  const markup = createIngredientMarkup(dataIngredient);
-  add(markup);
-});
+// getElement('vodka').then(data => {
+//   clearMarkupModal(divs);
+//   dataIngredient = data.ingredients;
+//   const markup = createIngredientMarkup(dataIngredient);
+//   add(markup);
+//   window.addEventListener('keydown', onEscapeBtnPush);
+// });
 
-function clearMarkupModal(element) {
+export function clearMarkupModal(element) {
   element.innerHTML = '';
 }
 
@@ -130,6 +131,7 @@ function onClickBtnAdd(e) {
     save('localIngredient', loadObj);
     btn1.textContent = 'Remove from favorite';
   }
+  
 }
 
 function cheackLocalStorage(id) {
@@ -147,3 +149,25 @@ function onCloseBtnFunc() {
 }
 
 divs.addEventListener('click', onClickBtnAdd);
+divs.addEventListener('click', closeBackdrop);
+
+
+export function onEscapeBtnPush (event) {
+  if (event.code !== 'Escape') {
+    return;
+  }
+  onCloseBtnFunc();
+  window.removeEventListener('keydown', onEscapeBtnPush);
+};
+
+function closeBackdrop (event){
+  if (event.currentTarget !== event.target) {
+    return;
+  }
+
+
+    if (!event.target.classList.contains('modal2')) {
+      return;
+    }
+  onCloseBtnFunc();
+};
