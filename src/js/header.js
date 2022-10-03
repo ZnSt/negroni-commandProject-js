@@ -3,6 +3,8 @@ import Notiflix from 'notiflix';
 import crateImageMarkUp from './murk-up';
 import { divRef } from './add-murk-up';
 
+import addMurkup from './add-murk-up';
+
 const refs = {
   openModalBtn: document.querySelector('[data-header-modal-open]'),
   closeModalBtn: document.querySelector('[data-header-modal-close]'),
@@ -101,7 +103,8 @@ async function amountData(coctaillNameVal) {
     const data = await getCoctail(coctaillNameVal);
     //divRef.innerHTML = '';
     errorDivEl.classList.add('error-hidden');
-    inputAddMurkup(crateImageMarkUp(data.drinks));
+    addMurkup(crateImageMarkUp(data.drinks));
+    console.log(data.drinks);
   } catch (error) {
     // console.log(error.massage);
     divRef.innerHTML = '';
@@ -110,7 +113,7 @@ async function amountData(coctaillNameVal) {
   }
 }
 
-//Функция добавления разметки по поиску в инпуте
-function inputAddMurkup(arr = []) {
-  divRef.innerHTML = arr;
-}
+// //Функция добавления разметки по поиску в инпуте
+// function inputAddMurkup(arr = []) {
+//   divRef.innerHTML = arr;
+// };
