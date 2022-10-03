@@ -87,7 +87,7 @@ export function clearMarkupModal(element) {
   element.innerHTML = '';
 }
 
-function save(key, value) {
+export function save(key, value) {
   try {
     const serializedState = JSON.stringify(value);
     localStorage.setItem(key, serializedState);
@@ -96,7 +96,7 @@ function save(key, value) {
   }
 }
 
-function load(key) {
+export function load(key) {
   try {
     const serializedState = localStorage.getItem(key);
     return serializedState === null ? undefined : JSON.parse(serializedState);
