@@ -19,7 +19,7 @@ async function openModalCoctWind(getCocktail) {
   }
 }
 
-//вешаем слушателя на Learn More у Леры
+//вешаем слушателя на кнопку Learn More у Леры
 const divContainerRef = document.querySelector('.main__flex')
 divContainerRef.addEventListener('click', onClickToCard)
 
