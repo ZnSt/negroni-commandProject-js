@@ -332,3 +332,14 @@
   top: 7px;
   left: 40px;
 }
+
+.change-bgcolor {
+  background-color: $main-orange; 
+}
+
+.change-color {
+  color: $primary-bg-color;
+}
+.change-icon-color {
+  fill: $primary-bg-color;
+}

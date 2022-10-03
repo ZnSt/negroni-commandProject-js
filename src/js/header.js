@@ -2,6 +2,7 @@ import axios from 'axios';
 import Notiflix from 'notiflix';
 import crateImageMarkUp from './murk-up';
 import { divRef } from './add-murk-up';
+import addMurkup from './add-murk-up';
   
 const refs = {
   openModalBtn: document.querySelector("[data-header-modal-open]"),
@@ -18,22 +19,48 @@ refs.openModalBtn.addEventListener("click", toggleModal);
 refs.closeModalBtn.addEventListener("click", toggleModal);
 refs.favorite.addEventListener('click', onFavoriteClick);
 refs.favoriteModal.addEventListener('click', onFavoriteModalClick);
+refs.body.addEventListener('click', closeFavorites);
+refs.body.addEventListener('click', closeFavoritesModal);
 
 function toggleModal() {
   refs.modal.classList.toggle("is-hidden");
   refs.body.classList.toggle("no-scroll");
 };
 
+//Функция открытия списка в хедере
 function onFavoriteClick(event) {
   event.preventDefault();
 
   refs.favoriteDiv.classList.toggle('none');
 }
 
+//Функция открытия списка в модалке в хедере
 function onFavoriteModalClick(event) {
   event.preventDefault();
 
   refs.favoriteDivModal.classList.toggle('none');
+}
+
+//Функция закрытия списка в хедере по клику на пустое место
+function closeFavorites(event) {
+  if (event.target.classList.contains('favorite')) {
+    return
+  }
+  if (refs.favoriteDiv.classList.contains('none')) {
+    return;
+  }
+  return refs.favoriteDiv.classList.add('none');
+}
+
+//Функция закрытия списка в модалке в хедере
+function closeFavoritesModal(event) {
+  if (event.target.classList.contains('favorite-modal')) {
+    return
+  }
+  if (refs.favoriteDivModal.classList.contains('none')) {
+    return;
+  }
+  return refs.favoriteDivModal.classList.add('none');
 }
 
 //Поиск 
@@ -49,14 +76,14 @@ function submitForm(event) {
   event.preventDefault();
 
   const { coctailName } = event.currentTarget.elements;
-  const coctaillNameVal = coctailName.value.trim();
-  //console.log(coctaillNameVal);
+  let coctaillNameVal = coctailName.value.trim();
 
   if (!coctaillNameVal) {
     return;
   }
 
- amountData(coctaillNameVal);
+  amountData(coctaillNameVal);
+  coctailName.value = '';
 }
 
 //Первая функция к бэкенду
@@ -79,7 +106,8 @@ async function amountData(coctaillNameVal) {
     const data = await getCoctail(coctaillNameVal);
     //divRef.innerHTML = '';
      errorDivEl.classList.add('error-hidden');
-    inputAddMurkup(crateImageMarkUp(data.drinks));
+    addMurkup(crateImageMarkUp(data.drinks));
+    console.log(data.drinks);
   }
   catch (error) {
     // console.log(error.massage);
@@ -89,7 +117,7 @@ async function amountData(coctaillNameVal) {
   }
 };
 
-//Функция добавления разметки по поиску в инпуте
-function inputAddMurkup(arr = []) {
-  divRef.innerHTML = arr;
-};
+// //Функция добавления разметки по поиску в инпуте
+// function inputAddMurkup(arr = []) {
+//   divRef.innerHTML = arr;
+// };
