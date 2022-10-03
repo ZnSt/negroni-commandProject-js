@@ -180,7 +180,7 @@
   font-size: 22px;
   line-height: 1, 9;
   text-align: center;
-  color: #202025;
+  color: var(--primary-text-color);
   margin-top: 122px;
   margin-bottom: 63px;
   @include tablet {
@@ -329,7 +329,7 @@
 }
 
 .change-bgcolor {
-  background-color: $main-orange; 
+  background-color: $main-orange;
 }
 
 .change-color {

@@ -1,11 +1,14 @@
 import crateImageMarkUp from './murk-up';
 import fetchRandomCocktail from './fetch';
 import addMurkup from './add-murk-up';
+import { whyTheme } from './switcher-theme';
 
 const divRef = document.querySelector('.main__flex');
 const spinnerRef = document.querySelector('.spinner-alert');
 let responseDrink = '';
 let allPromises = [];
+
+whyTheme();
 
 // Andrei
 divRef.addEventListener('click', onAddCardBtnClick);
@@ -27,12 +30,11 @@ function onAddCardBtnClick(e) {
   <span><svg class="main__button-imgfull" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M10.5 19L8.9775 17.6332C3.57 12.7978 0 9.60872 0 5.69482C0 2.50572 2.541 0 5.775 0C7.602 0 9.3555 0.838692 10.5 2.16403C11.6445 0.838692 13.398 0 15.225 0C18.459 0 21 2.50572 21 5.69482C21 9.60872 17.43 12.7978 12.0225 17.6436L10.5 19Z" fill="#FD5103"></path>
   </svg></span>`;
-  e.target.dataset.actions='remove';
-
+  e.target.dataset.actions = 'remove';
 }
 
 function onRemCardBtnClick(e) {
-  if ( e.target.dataset.actions !== 'remove') {
+  if (e.target.dataset.actions !== 'remove') {
     return;
   }
   e.target.innerHTML = `  Add to 
@@ -43,7 +45,7 @@ function onRemCardBtnClick(e) {
   <path d="M10.5 19L8.9775 17.6332C3.57 12.7978 0 9.60872 0 5.69482C0 2.50572 2.541 0 5.775 0C7.602 0 9.3555 0.838692 10.5 2.16403C11.6445 0.838692 13.398 0 15.225 0C18.459 0 21 2.50572 21 5.69482C21 9.60872 17.43 12.7978 12.0225 17.6436L10.5 19Z" fill="#FD5103"></path>
   </svg></span>`;
 
-  e.target.dataset.actions='add';
+  e.target.dataset.actions = 'add';
 
   // remFromLocalStCoctails(e.target.dataset.id)
 }
@@ -169,7 +171,7 @@ async function start(number) {
   //   console.log('allPromises :>> ', allPromises);
   const create = await crateImageMarkUp(renderArray);
   spinnerRef.classList.add('visually-hidden-spinner');
-  addMurkup(create);  
+  addMurkup(create);
 }
 
 // Andrei
@@ -190,6 +192,5 @@ export function addToLocalStCoctails({ strDrink, strDrinkThumb, idDrink }) {
     });
     localStorage.setItem('FAV_COCTAILS', JSON.stringify(newLocal));
   }
-
 }
 // Andrei

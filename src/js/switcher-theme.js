@@ -20,7 +20,6 @@ function addThemeToLocalSt(theme) {
 function getThemefromLocalSt() {
   return JSON.parse(localStorage.getItem('DESKTOP_THEME'));
 }
-console.log('ojdpvojd');
 
 export function whyTheme() {
   document.documentElement.setAttribute('data-theme', getThemefromLocalSt());
