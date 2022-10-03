@@ -15,6 +15,10 @@ export async function getElement(name) {
 }
 
 export function createIngredientMarkup(response = []) {
+  const clearIngrMarkup = document.querySelector('.modalw2');
+  if (clearIngrMarkup) {
+    clearIngrMarkup.remove();
+  }
   const getIngredientOnLocal = JSON.parse(
     localStorage.getItem('localIngredient')
   );
