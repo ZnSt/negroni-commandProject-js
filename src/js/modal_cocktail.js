@@ -1,15 +1,18 @@
 import axios from 'axios';
 import { getElement, createIngredientMarkup, add, clearMarkupModal, onEscapeBtnPush } from './modalIng';
 
+//1-вся модалка; 2-кнопка add
 const refs = {
   modCoctailWindow: document.querySelector(".mod__coctail"),
   modCoctailBtnAdd: document.querySelector('.mod__coctail--button--add'),
-  
 };
 
 let id
+
+// вся модалка №2
 const divs = document.querySelector('.modal2');
 
+//Запрос на бэкэнд
 async function openModalCoctWind(getCocktail) {
   try {
     const idCocktail = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${getCocktail}`)
@@ -21,20 +24,21 @@ async function openModalCoctWind(getCocktail) {
 
 //вешаем слушателя на кнопку Learn More у Леры
 const divContainerRef = document.querySelector('.main__flex')
+console.log(divContainerRef)
 divContainerRef.addEventListener('click', onClickToCard)
 
-// функция которая получает и возвращает IdDrinks
+// функция которая получает и возвращает IdDrinks по клику на кнопку Learn more
 function onClickToCard(event) {
-  // if (event.target !== 'BUTTON') {
-  //   return
-  // }
   const learMoreBtn = event.target.closest('.button__main-full')
-  id = Number(learMoreBtn.dataset.id)
+  id = Number(learMoreBtn.dataset.learnmoreid)
+  console.log(id)
   refs.modCoctailWindow.classList.toggle('is-hidden')
   openModalCoctWind(id).then(data => {
   const dataCocktails = data.drinks
   const marcup = createMarkupCoct(dataCocktails)
     addMarcup(marcup)
+
+    // 
     window.addEventListener('keydown', onEscapeBtnPushCoct);
     const closeBtn = document.querySelector('.mod__coctail--btn__close')
     closeBtn.addEventListener('click', onCloseBtnFuncCoct)
@@ -46,12 +50,12 @@ function addMarcup(marcupString) {
   refs.modCoctailWindow.insertAdjacentHTML('beforeend', marcupString);
   const modCocteilParentOfIngredients = document.querySelector('.mod__coctail--items')
   modCocteilParentOfIngredients.addEventListener('click', openSecondModal)
+  console.log(modCocteilParentOfIngredients)
 }
 
 function openSecondModal(event) {
   const nameIngredient = event.target.dataset.name
   console.log(nameIngredient)
-    
   getElement(nameIngredient).then(data => {
   clearMarkupModal(divs);
   dataIngredient = data.ingredients;
@@ -61,6 +65,16 @@ function openSecondModal(event) {
 });
 }
 
+// функция - закрытие модалки на кнопке Escape
+function onEscapeBtnPushCoct (event) {
+  if (event.code !== 'Escape') {
+    return;
+  }
+  onCloseBtnFuncCoct();
+  window.removeEventListener('keydown', onEscapeBtnPushCoct);
+};
+
+//функция оставляет количество ингридиентов
 function andrei(elem){
     if(!elem){
       return elem = ""
@@ -169,14 +183,6 @@ function onCloseBtnFuncCoct() {
   refs.modCoctailWindow.classList.add('is-hidden');
 }
 
-// функция - закрытие модалки на кнопке Escape
-function onEscapeBtnPushCoct (event) {
-  if (event.code !== 'Escape') {
-    return;
-  }
-  onCloseBtnFuncCoct();
-  window.removeEventListener('keydown', onEscapeBtnPushCoct);
-};
 
 // функция - закрытие модалки по backdrope
 function closeBackdropCoct (event){
