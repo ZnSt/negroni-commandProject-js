@@ -1,7 +1,7 @@
 import crateImageMarkUp from './murk-up';
 import fetchRandomCocktail from './fetch';
 import addMurkup from './add-murk-up';
-import { whyTheme } from './switcher-theme';
+
 // Andrei
 import * as arrayFromLStorage from './addCoctToFav';
 // import {addToLocalStCoctails} from './addCoctToFav'
@@ -12,8 +12,6 @@ const spinnerRef = document.querySelector('.spinner-alert');
 
 // let responseDrink = '';
 let allPromises = [];
-
-whyTheme();
 
 // Andrei
 // divRef.addEventListener('click', onAddCardBtnClick);
