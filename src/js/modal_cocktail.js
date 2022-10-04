@@ -8,7 +8,6 @@ import {
   save,
   load,
 } from './modalIng';
-// import { addToLocalStCoctails } from './random'
 //1-вся модалка; 2-кнопка add
 const refs = {
   modCoctailWindow: document.querySelector('.mod__coctail'),
@@ -41,7 +40,6 @@ function onClickToCard(event) {
   if (event.target.nodeName !== 'BUTTON') {
     return;
   }
-  // addToLocalStCoctails()
   id = Number(learMoreBtn.dataset.learnmoreid);
   console.log(id);
 
@@ -54,7 +52,6 @@ function onClickToCard(event) {
     const marcup = createMarkupCoct(dataCocktails);
     addMarcup(marcup);
 
-    //
     window.addEventListener('keydown', onEscapeBtnPushCoct);
     const closeBtn = document.querySelector('.mod__coctail--btn__close');
     closeBtn.addEventListener('click', onCloseBtnFuncCoct);
@@ -323,22 +320,3 @@ function onCloseBtnFuncCoct() {
 //   console.log(measureKeys)
 // }
 // createLiMarcup()
-
-
-// .backdrop {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   background: rgba(0, 0, 0, 0.2);
-//   transition: opacity 250ms linear, visibility 250ms linear;
-
-//   overflow: visible;
-// }
-
-// .backdrop.is-hidden {
-//   opacity: 0;
-//   pointer-events: none;
-//   visibility: hidden;
-// }

@@ -7,7 +7,10 @@ export const renderContainer = document.querySelector('.main__flex');
 export const errorContainer = document.querySelector('.sorry');
 const title = document.querySelector('.main__title');
 
-ulContainer.addEventListener('click', onClickBtn);
+if (ulContainer) {
+  ulContainer.addEventListener('click', onClickBtn);
+}
+
 export default async function onClickBtn(event) {
   const value = event.target.dataset.value.toLowerCase();
   if (event.target.nodeName !== 'LI') {
@@ -17,7 +20,6 @@ export default async function onClickBtn(event) {
     const responseData = await API.fetchGetData(value);
 
     if (responseData.drinks === null) {
-      console.log('у нас ничего нету');
       errorContainer.classList.remove('error-hidden');
       title.style.display = 'none';
       renderContainer.innerHTML = '';
@@ -28,7 +30,6 @@ export default async function onClickBtn(event) {
       wichDataToUse(numberOfCards, responseData.drinks);
       crateImageMarkUp(responseData.drinks);
       errorContainer.classList.add('error-hidden');
-      console.log(responseData.drinks);
     }
   } catch (error) {
     throw new Error(error);
