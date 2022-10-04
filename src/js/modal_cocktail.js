@@ -1,78 +1,83 @@
 import axios from 'axios';
-import { getElement, createIngredientMarkup, add, clearMarkupModal, onEscapeBtnPush, save, load } from './modalIng';
-// import { addToLocalStCoctails } from './random' 
+import {
+  getElement,
+  createIngredientMarkup,
+  add,
+  clearMarkupModal,
+  onEscapeBtnPush,
+  save,
+  load,
+} from './modalIng';
+// import { addToLocalStCoctails } from './random'
 //1-вся модалка; 2-кнопка add
 const refs = {
-  modCoctailWindow: document.querySelector(".mod__coctail"),
+  modCoctailWindow: document.querySelector('.mod__coctail'),
   modCoctailBtnAdd: document.querySelector('.mod__coctail--button--add'),
 };
 
-let id
-let dataCoct = []
+let id;
+let dataCoct = [];
 // вся модалка №2
 const divs = document.querySelector('.modal2');
 
 //Запрос на бэкэнд
 async function openModalCoctWind(getCocktail) {
   try {
-    const idCocktail = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${getCocktail}`)
-    return idCocktail.data
+    const idCocktail = await axios.get(
+      `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${getCocktail}`
+    );
+    return idCocktail.data;
   } catch (error) {
-    console.log('error', error)
+    console.log('error', error);
   }
 }
 
 //вешаем слушателя на кнопку Learn More у Леры
-const divContainerRef = document.querySelector('.main__flex')
-console.log(divContainerRef)
-divContainerRef.addEventListener('click', onClickToCard)
+const divContainerRef = document.querySelector('.main__flex');
+if (divContainerRef) {
+  divContainerRef.addEventListener('click', onClickToCard);
+}
 
 // функция которая получает и возвращает IdDrinks по клику на кнопку Learn more
 function onClickToCard(event) {
-  const learMoreBtn = event.target.closest('.button__main-full')
+  const learMoreBtn = event.target.closest('.button__main-full');
   if (event.target.nodeName !== 'BUTTON') {
     return;
   }
   // addToLocalStCoctails()
-  id = Number(learMoreBtn.dataset.learnmoreid)
-  
-  console.log(id)
-  refs.modCoctailWindow.classList.toggle('is-hidden')
+  id = Number(learMoreBtn.dataset.learnmoreid);
+
+  console.log(id);
+  refs.modCoctailWindow.classList.toggle('is-hidden');
   openModalCoctWind(id).then(data => {
-    dataCoct = data.drinks
-    console.log(dataCoct[0])
-  const dataCocktails = data.drinks
-  const marcup = createMarkupCoct(dataCocktails)
-    addMarcup(marcup)
+    dataCoct = data.drinks;
+    console.log(dataCoct[0]);
+    const dataCocktails = data.drinks;
+    const marcup = createMarkupCoct(dataCocktails);
+    addMarcup(marcup);
 
-    // 
+    //
     window.addEventListener('keydown', onEscapeBtnPushCoct);
-    const closeBtn = document.querySelector('.mod__coctail--btn__close')
-    closeBtn.addEventListener('click', onCloseBtnFuncCoct)
-    console.log(dataCoct[0])
-  const numberId = dataCoct[0].idDrink;
-  console.log(numberId)
-  const btn1 = document.querySelector('.mod__coctail--button--add');
+    const closeBtn = document.querySelector('.mod__coctail--btn__close');
+    closeBtn.addEventListener('click', onCloseBtnFuncCoct);
+    console.log(dataCoct[0]);
+    const numberId = dataCoct[0].idDrink;
+    console.log(numberId);
+    const btn1 = document.querySelector('.mod__coctail--button--add');
 
-  if (cheackCocktLocalStorage(numberId)) {
-    let loadObj = load('FAV_COCTAILS');
-    loadObj = loadObj.filter(
-      ingredients => ingredients.idDrink !== numberId
-    );
-    save('FAV_COCTAILS', loadObj);
-    btn1.textContent = 'Add to favorite';
-  } else {
-    let loadObj = load('FAV_COCTAILS');
-    loadObj.push(...dataCoct);
-    save('FAV_COCTAILS', loadObj);
-    btn1.textContent = 'Remove from favorite';
-  }
-  })
-  
+    if (cheackCocktLocalStorage(numberId)) {
+      let loadObj = load('FAV_COCTAILS');
+      loadObj = loadObj.filter(ingredients => ingredients.idDrink !== numberId);
+      save('FAV_COCTAILS', loadObj);
+      btn1.textContent = 'Add to favorite';
+    } else {
+      let loadObj = load('FAV_COCTAILS');
+      loadObj.push(...dataCoct);
+      save('FAV_COCTAILS', loadObj);
+      btn1.textContent = 'Remove from favorite';
+    }
+  });
 }
-
-
-
 
 function cheackCocktLocalStorage(id) {
   const currentObj = load('FAV_COCTAILS');
@@ -84,43 +89,43 @@ function cheackCocktLocalStorage(id) {
   return false;
 }
 
-
-
 // функция - закрытие модалки на кнопке Escape
-function onEscapeBtnPushCoct (event) {
+function onEscapeBtnPushCoct(event) {
   if (event.code !== 'Escape') {
     return;
   }
   onCloseBtnFuncCoct();
   window.removeEventListener('keydown', onEscapeBtnPushCoct);
-};
+}
 
 //функция добавляет разметку
 function addMarcup(marcupString) {
   refs.modCoctailWindow.insertAdjacentHTML('beforeend', marcupString);
-  const modCocteilParentOfIngredients = document.querySelector('.mod__coctail--items')
-  modCocteilParentOfIngredients.addEventListener('click', openSecondModal)
-  console.log(modCocteilParentOfIngredients)
+  const modCocteilParentOfIngredients = document.querySelector(
+    '.mod__coctail--items'
+  );
+  modCocteilParentOfIngredients.addEventListener('click', openSecondModal);
+  console.log(modCocteilParentOfIngredients);
 }
 
 function openSecondModal(event) {
-  const nameIngredient = event.target.dataset.name
-  console.log(nameIngredient)
+  const nameIngredient = event.target.dataset.name;
+  console.log(nameIngredient);
   getElement(nameIngredient).then(data => {
-  clearMarkupModal(divs);
-  dataIngredient = data.ingredients;
-  const markup = createIngredientMarkup(dataIngredient);
-  add(markup);
-  window.addEventListener('keydown', onEscapeBtnPush);
-});
+    clearMarkupModal(divs);
+    dataIngredient = data.ingredients;
+    const markup = createIngredientMarkup(dataIngredient);
+    add(markup);
+    window.addEventListener('keydown', onEscapeBtnPush);
+  });
 }
 
 //функция оставляет количество ингридиентов
-function andrei(elem){
-    if(!elem){
-      return elem = ""
-    }
-    return elem
+function andrei(elem) {
+  if (!elem) {
+    return (elem = '');
+  }
+  return elem;
 }
 
 //функция от Юры
@@ -157,9 +162,27 @@ function andrei(elem){
 
 //функция создает разметку
 function createMarkupCoct(value = []) {
-
-  return value.map(({ idDrink, strDrinkThumb, strDrink, strInstructions, strIngredient1, strMeasure1, strIngredient2, strMeasure2, strIngredient3, strMeasure3, strIngredient4, strMeasure4, strIngredient5, strMeasure5, strIngredient6, strMeasure6, }) => {
-    return `<div class="mod__coctailw1"><p class="mod__coctail--name">${strDrink}</p>
+  return value
+    .map(
+      ({
+        idDrink,
+        strDrinkThumb,
+        strDrink,
+        strInstructions,
+        strIngredient1,
+        strMeasure1,
+        strIngredient2,
+        strMeasure2,
+        strIngredient3,
+        strMeasure3,
+        strIngredient4,
+        strMeasure4,
+        strIngredient5,
+        strMeasure5,
+        strIngredient6,
+        strMeasure6,
+      }) => {
+        return `<div class="mod__coctailw1"><p class="mod__coctail--name">${strDrink}</p>
   <button class="mod__coctail--btn__close"><svg width="18px" height="18px">
       // <use href=".//images/svg/symbol-defs.svg#icon-close" class="mod__coctail--btn__link"></use>
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -178,35 +201,68 @@ function createMarkupCoct(value = []) {
       <p class="mod__coctail--ingredients">ingredients</p>
       <p class="mod__coctail--compound">Per cocktail</p>
       <ul class="mod__coctail--items">
-        ${strMeasure1?`<li class="mod__coctail--item" ><a class="mod__coctail--item__link" data-name=${strIngredient1} href="#">&#10038 ${andrei(strMeasure1)} ${andrei(strIngredient1)}</a></li>`:``}
-        ${strMeasure2?`<li class="mod__coctail--item" ><a class="mod__coctail--item__link" data-name=${strIngredient2} href="#">&#10038 ${andrei(strMeasure2)} ${andrei(strIngredient2)}</a></li>`:``}
-        ${strMeasure3?`<li class="mod__coctail--item" ><a class="mod__coctail--item__link" data-name=${strIngredient3} href="#">&#10038 ${andrei(strMeasure3)} ${andrei(strIngredient3)}</a></li>`:``}
-        ${strMeasure4?`<li class="mod__coctail--item" ><a class="mod__coctail--item__link" data-name=${strIngredient4} href="#">&#10038 ${andrei(strMeasure4)} ${andrei(strIngredient4)}</a></li>`:``}
-        ${strMeasure5?`<li class="mod__coctail--item" ><a class="mod__coctail--item__link" data-name=${strIngredient5} href="#">&#10038 ${andrei(strMeasure5)} ${andrei(strIngredient5)}</a></li>`:``}
-        ${strMeasure6?`<li class="mod__coctail--item" ><a class="mod__coctail--item__link" data-name=${strIngredient6} href="#">&#10038 ${andrei(strMeasure6)} ${andrei(strIngredient6)}</a></li>`:``}
+        ${
+          strMeasure1
+            ? `<li class="mod__coctail--item" ><a class="mod__coctail--item__link" data-name=${strIngredient1} href="#">&#10038 ${andrei(
+                strMeasure1
+              )} ${andrei(strIngredient1)}</a></li>`
+            : ``
+        }
+        ${
+          strMeasure2
+            ? `<li class="mod__coctail--item" ><a class="mod__coctail--item__link" data-name=${strIngredient2} href="#">&#10038 ${andrei(
+                strMeasure2
+              )} ${andrei(strIngredient2)}</a></li>`
+            : ``
+        }
+        ${
+          strMeasure3
+            ? `<li class="mod__coctail--item" ><a class="mod__coctail--item__link" data-name=${strIngredient3} href="#">&#10038 ${andrei(
+                strMeasure3
+              )} ${andrei(strIngredient3)}</a></li>`
+            : ``
+        }
+        ${
+          strMeasure4
+            ? `<li class="mod__coctail--item" ><a class="mod__coctail--item__link" data-name=${strIngredient4} href="#">&#10038 ${andrei(
+                strMeasure4
+              )} ${andrei(strIngredient4)}</a></li>`
+            : ``
+        }
+        ${
+          strMeasure5
+            ? `<li class="mod__coctail--item" ><a class="mod__coctail--item__link" data-name=${strIngredient5} href="#">&#10038 ${andrei(
+                strMeasure5
+              )} ${andrei(strIngredient5)}</a></li>`
+            : ``
+        }
+        ${
+          strMeasure6
+            ? `<li class="mod__coctail--item" ><a class="mod__coctail--item__link" data-name=${strIngredient6} href="#">&#10038 ${andrei(
+                strMeasure6
+              )} ${andrei(strIngredient6)}</a></li>`
+            : ``
+        }
       </ul>
     </div>
   </div>
   <div class="mod__coctail--blockbutton--add">
     <button class="mod__coctail--button--add" type="button">Add to favorite</button>
   </div>
-  </div>`
-  }).join()
-
+  </div>`;
+      }
+    )
+    .join();
 }
 
 // refs.modCoctailBtnClose.addEventListener('click', clearMarkup)
-  
+
 // function closeModalBtnCocktail() {
 //   refs.modCoctailWindow.classList.add('is-hidden')
 // }
 // function clearMarkup() {
 //   modCoctailWindow.innerHTML = '';
 // }
-
-
-
-
 
 // getElement('vodka').then(data => {
 //   clearMarkupModal(divs);
@@ -216,27 +272,23 @@ function createMarkupCoct(value = []) {
 //   window.addEventListener('keydown', onEscapeBtnPush);
 // });
 
-
-refs.modCoctailWindow.addEventListener('click', closeBackdropCoct)
+refs.modCoctailWindow.addEventListener('click', closeBackdropCoct);
 
 // функция - скрытие модалки
 function onCloseBtnFuncCoct() {
   refs.modCoctailWindow.classList.add('is-hidden');
 }
 
-
 // функция - закрытие модалки по backdrope
-function closeBackdropCoct (event){
+function closeBackdropCoct(event) {
   if (event.currentTarget !== event.target) {
     return;
   }
-    if (!event.target.classList.contains('mod__coctail')) {
-      return;
-    }
+  if (!event.target.classList.contains('mod__coctail')) {
+    return;
+  }
   onCloseBtnFuncCoct();
-};
-
+}
 
 // let modCoctailBtnClose = document.querySelector(".mod__coctail--btn__close")
 //   modCoctailBtnClose.addEventListener('click', closeModalBtnCocktail)
-// для коммита

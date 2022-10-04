@@ -15,7 +15,9 @@ let allPromises = [];
 // Andrei
 // divRef.addEventListener('click', onAddCardBtnClick);
 // divRef.addEventListener('click', onRemCardBtnClick);
-divRef.addEventListener('click', test);
+if (divRef) {
+  divRef.addEventListener('click', test);
+}
 // divRef.addEventListener('click', onLearnCardBtnClick);
 
 function test(e) {
@@ -97,7 +99,9 @@ export let numberOfCards = 0;
 // Andrei
 
 const windowScreen = window.screen.width;
-spinnerRef.classList.remove('visually-hidden-spinner');
+if (spinnerRef) {
+  spinnerRef.classList.remove('visually-hidden-spinner');
+}
 
 if (windowScreen < 768) {
   numberOfCards = 3;
@@ -106,12 +110,14 @@ if (windowScreen < 768) {
 if (windowScreen >= 768 && windowScreen < 1280) {
   numberOfCards = 6;
 
-  wichDataToUse(numberOfCards);
+  if (numberOfCards) {
+    // wichDataToUse(numberOfCards);
+  }
 }
 if (windowScreen >= 1280) {
   numberOfCards = 9;
 
-  wichDataToUse(numberOfCards);
+  // wichDataToUse(numberOfCards);
 }
 
 //запись данных в пустой массив
@@ -162,7 +168,9 @@ function checkSize(e) {
 }
 
 function clearContainer() {
-  divRef.innerHTML = '';
+  if (divRef) {
+    divRef.innerHTML = '';
+  }
 }
 export function wichDataToUse(numberOfCards, data) {
   if (divRef.dataset.page === 'favorite-coctails') {
@@ -181,7 +189,6 @@ export function wichDataToUse(numberOfCards, data) {
 
   getRandomData(numberOfCards);
   console.log('getRandomData  allPromises', allPromises);
-
 }
 
 // фильтрация промисей
@@ -207,7 +214,9 @@ async function start(number) {
   renderArray.splice(number, allPromises.length);
   //   console.log('allPromises :>> ', allPromises);
   const create = await crateImageMarkUp(renderArray);
-  spinnerRef.classList.add('visually-hidden-spinner');
+  if (spinnerRef) {
+    spinnerRef.classList.add('visually-hidden-spinner');
+  }
   addMurkup(create);
 }
 
