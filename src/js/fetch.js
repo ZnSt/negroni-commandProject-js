@@ -4,7 +4,7 @@ export default async function fetchRandomCocktail() {
     'https://www.thecocktaildb.com/api/json/v1/1/random.php'
   );
 
-  responseDrink = res?.data?.drinks[0];
-    // console.log(responseDrink.idDrink);
+  const responseDrink = await res?.data?.drinks[0];
+  // console.log(responseDrink.idDrink);
   return responseDrink;
 }

@@ -10,7 +10,7 @@ import * as arrayFromLStorage from './addCoctToFav';
 const divRef = document.querySelector('.main__flex');
 const spinnerRef = document.querySelector('.spinner-alert');
 
-let responseDrink = '';
+// let responseDrink = '';
 let allPromises = [];
 
 whyTheme();
