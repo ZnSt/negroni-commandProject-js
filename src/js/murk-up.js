@@ -1,7 +1,6 @@
 export default function crateImageMarkUp(response) {
   return response
     .map(({ strDrinkThumb, strDrink, idDrink }) => {
-      // console.log(idDrink)
       return `<div  class="main__container">
         <img width='325px' height='325px' class="main__img" src="${strDrinkThumb}" alt="negroni" />
         <div class="main__text-container">
@@ -57,4 +56,3 @@ function checkBtnStatus(id) {
   }
   return `<button data-atribute="ok" data-actions ='add' data-id="${id}" class="button__main-empty button__class js-AddBtn-mark"> Add to`;
 }
-// ${checkBtnStatus(idDrink)? removeFavBtnMark : addfavorBtnMark}

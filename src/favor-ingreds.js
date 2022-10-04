@@ -1,12 +1,5 @@
 import axios from 'axios';
-// import {
-//   getElement,
-//   createIngredientMarkup,
-//   add,
-//   clearMarkupModal,
-//   onEscapeBtnPush,
-// } from './modalIng';
-//
+
 const divs = document.querySelector('.modal2'); // Nikita
 console.log(divs);
 
@@ -15,7 +8,6 @@ console.log(favorIngredsList);
 const STORAGE_KEY = 'localIngredient';
 
 const favIngredsFromLS = JSON.parse(localStorage.getItem(STORAGE_KEY));
-// console.log(favIngredsFromLS);
 
 function makeGalleryItem({
   strIngredient,
@@ -51,7 +43,6 @@ favorIngredsList.innerHTML = favIngredsFromLSArr.join('');
 function openModalIngredient(event) {
   const name = event.target.dataset.name;
   console.log(name);
-  //   console.dir(event.target);
   getElement(name).then(data => {
     clearMarkupModal(divs);
     dataIngredient = data.ingredients;

@@ -8,22 +8,20 @@ const selectText = document.querySelector('.input-text');
 const svgHero = document.querySelector('.hero__icon');
 
 customSelect.addEventListener('click', onClickCustomSelect);
-// dropDown.addEventListener('click', onClickListMobi);
 
 function onClickCustomSelect() {
-
-    dropDown.classList.toggle('is-hidden');
-    listMobi.addEventListener('click', onClickList);
+  dropDown.classList.toggle('is-hidden');
+  listMobi.addEventListener('click', onClickList);
 }
 customSelect.classList.remove('change-bgcolor');
 selectText.classList.remove('change-color');
 svgHero.classList.remove('change-icon-color');
 function onClickList(event) {
-    customSelect.classList.add('change-bgcolor');
-    selectText.classList.add('change-color');
-    svgHero.classList.add('change-icon-color');
-    const result = event.target.dataset.value;
-    selectText.textContent = result;
-    dropDown.classList.toggle('is-hidden');
-    return onClickBtn(event);
+  customSelect.classList.add('change-bgcolor');
+  selectText.classList.add('change-color');
+  svgHero.classList.add('change-icon-color');
+  const result = event.target.dataset.value;
+  selectText.textContent = result;
+  dropDown.classList.toggle('is-hidden');
+  return onClickBtn(event);
 }
