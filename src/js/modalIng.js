@@ -68,7 +68,7 @@ export function createIngredientMarkup(response = []) {
                 } 
             </ul> 
             <div class="modalw2--blockbutton--add"> 
-              <button class="modalw2--button--add" type="button">Add to favorite</button> 
+              <button class="modalw2--button--add" data-name="${strIngredient}" type="button">Add to favorite</button> 
               </div> 
             </div> 
             </div>`;
@@ -92,14 +92,6 @@ export function save(key, value) {
   }
 }
 
-// getElement('vodka').then(data => {
-//   clearMarkupModal(divs);
-//   dataIngredient = data.ingredients;
-//   const markup = createIngredientMarkup(dataIngredient);
-//   add(markup);
-//   window.addEventListener('keydown', onEscapeBtnPush);
-// });
-
 export function load(key) {
   try {
     const serializedState = localStorage.getItem(key);
@@ -110,31 +102,40 @@ export function load(key) {
 }
 
 function onClickBtnAdd(e) {
-  if (e.target.closest('.modalw2__btn')) {
-    const onCloseBtn = document.querySelector('.modalw2__btn');
-    onCloseBtn.addEventListener('click', onCloseBtnFunc);
-  }
+  // if (e.target.closest('.modalw2__btn')) {
+  const onCloseBtn = document.querySelector('.modalw2__btn');
+  //   onCloseBtn.addEventListener('click', onCloseBtnFunc);
+  // }
 
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
 
-  const numberId = dataIngredient[0].idIngredient;
-  const btn1 = document.querySelector('.modalw2--button--add');
+  const dataName = e.target.dataset.name;
+  console.log(dataName);
+  getElement(dataName).then(data => {
+    // clearMarkupModal(divs);
+    dataIngredient = data.ingredients;
+    const numberId = dataIngredient[0].idIngredient;
+    const btn1 = document.querySelector('.modalw2--button--add');
 
-  if (cheackLocalStorage(numberId)) {
-    let loadObj = load('localIngredient');
-    loadObj = loadObj.filter(
-      ingredients => ingredients.idIngredient != numberId
-    );
-    save('localIngredient', loadObj);
-    btn1.textContent = 'Add to favorite';
-  } else {
-    let loadObj = load('localIngredient');
-    loadObj.push(...dataIngredient);
-    save('localIngredient', loadObj);
-    btn1.textContent = 'Remove from favorite';
-  }
+    if (cheackLocalStorage(numberId)) {
+      let loadObj = load('localIngredient');
+      loadObj = loadObj.filter(
+        ingredients => ingredients.idIngredient != numberId
+      );
+      save('localIngredient', loadObj);
+      btn1.textContent = 'Add to favorite';
+    } else {
+      let loadObj = load('localIngredient');
+      loadObj.push(...dataIngredient);
+      save('localIngredient', loadObj);
+      btn1.textContent = 'Remove from favorite';
+    }
+    // const markup = createIngredientMarkup(dataIngredient);
+    // add(markup);
+    // window.addEventListener('keydown', onEscapeBtnPush);
+  });
 }
 
 function cheackLocalStorage(id) {
@@ -147,10 +148,18 @@ function cheackLocalStorage(id) {
   return false;
 }
 
-function onCloseBtnFunc() {
+function onCloseBtnFunc(e) {
+  console.log(e.target);
+  if (e.target.closest('.modalw2__btn')) {
+    closeBtnFunc();
+  }
+}
+
+function closeBtnFunc() {
   divs.classList.add('is-hidden');
 }
 
+divs.addEventListener('click', onCloseBtnFunc);
 divs.addEventListener('click', onClickBtnAdd);
 divs.addEventListener('click', closeBackdrop);
 
@@ -158,7 +167,7 @@ export function onEscapeBtnPush(event) {
   if (event.code !== 'Escape') {
     return;
   }
-  onCloseBtnFunc();
+  closeBtnFunc();
   window.removeEventListener('keydown', onEscapeBtnPush);
 }
 
@@ -170,5 +179,5 @@ function closeBackdrop(event) {
   if (!event.target.classList.contains('modal2')) {
     return;
   }
-  onCloseBtnFunc();
+  closeBtnFunc();
 }
