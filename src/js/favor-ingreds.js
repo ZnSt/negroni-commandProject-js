@@ -1,31 +1,25 @@
 const cocktailContainer = document.querySelector('.main');
 const favorIngredsList = document.querySelector('.favor-ingreds__list');
 const divs = document.querySelector('.modal2');
-// console.log(divs);
+
+import {
+  getElement,
+  createIngredientMarkup,
+  add,
+  clearMarkupModal,
+  onEscapeBtnPush,
+  save,
+  load,
+} from './modalIng';
 
 function checkPage() {
   if (favorIngredsList.dataset.page === 'favor-ingreds') {
-    // console.log('function checkPage');
     cocktailContainer.classList.add('visually-hidden');
   }
 }
 checkPage();
 
 const STORAGE_KEY = 'localIngredient';
-
-// console.log(favIngredsFromLS);
-
-const someIngreds = [
-  { strIngredient: 'aaa', strType: 'jghfk' },
-  { strIngredient: 'bbb', strType: 'jjtrf' },
-  { strIngredient: 'ccc', strType: 'ggaew' },
-  { strIngredient: 'ddd', strType: 'gufki' },
-  { strIngredient: 'eee', strType: 'rfthhy' },
-  { strIngredient: 'fff', strType: 'ghmgn' },
-  { strIngredient: 'jjj', strType: 'yfklf' },
-];
-
-// localStorage.setItem(STORAGE_KEY, JSON.stringify(someIngreds));
 
 const favIngredsFromLS = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
@@ -60,8 +54,6 @@ const favIngredsFromLSArr = favIngredsFromLS.map(el => {
 
 favorIngredsList.innerHTML = favIngredsFromLSArr.join('');
 
-// favorIngredsList.insertAdjacentHTML('afterbegin', favIngredsFromLSArr.join(''));
-
 favorIngredsList.addEventListener('click', onRemoveIngredClick);
 
 function onRemoveIngredClick(event) {
@@ -94,16 +86,18 @@ function remFromLocalSIngreds(ingredName) {
 
 function openModalIngredient(event) {
   const name = event.target.dataset.name;
-  console.log(name);
-  //   console.dir(event.target);
-  //   getElement(name).then(data => {
-  //     clearMarkupModal(divs);
-  //     dataIngredient = data.ingredients;
-  //     const markup = createIngredientMarkup(dataIngredient);
-  //     add(markup);
 
-  //     // window.addEventListener('keydown', onEscapeBtnPush);
-  //   });
+  getElement(name).then(data => {
+    clearMarkupModal(divs);
+    divs.classList.remove('is-hidden');
+    const dataIngredient = data.ingredients;
+    const markup = createIngredientMarkup(dataIngredient);
+    add(markup);
+    window.addEventListener('keydown', onEscapeBtnPush);
+    const btnContainer = divs.querySelector('.modalw2--blockbutton--add');
+    btnContainer.innerHTML = '';
+  });
+
   if (!event.target.classList.contains('btn-rusty')) {
     return;
   }
