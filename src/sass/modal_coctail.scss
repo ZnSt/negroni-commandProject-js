@@ -29,7 +29,7 @@
   background-color: $primary-bg-color;
 
   width: 480px;
-  max-height: 1110px;
+  max-height: 1150px;
   padding: 40px 20px;
   overflow: hidden;
 
@@ -54,8 +54,9 @@
     @media screen and(min-width:768px) {
         order: 1;
     position: absolute;
-    top: 40px;
+    top: 20px;
     left: 320px;
+    max-width: 400px;
       }
 };
 

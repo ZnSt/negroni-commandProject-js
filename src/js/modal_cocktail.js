@@ -127,6 +127,14 @@ function createMarkupCoct(value = []) {
         strMeasure5,
         strIngredient6,
         strMeasure6,
+        strIngredient7,
+        strMeasure7,
+        strIngredient8,
+        strMeasure8,
+        strIngredient9,
+        strMeasure9,
+        strIngredient10,
+        strMeasure10,
       }) => {
         let ingredientCheck;
         if (getIngredientOnLocal) {
@@ -193,6 +201,34 @@ function createMarkupCoct(value = []) {
             ? `<li class="mod__coctail--item" ><a class="mod__coctail--item__link" data-name=${strIngredient6} href="#">&#10038 ${andrei(
                 strMeasure6
               )} ${andrei(strIngredient6)}</a></li>`
+            : ``
+        }
+        ${
+          strMeasure7
+            ? `<li class="mod__coctail--item" ><a class="mod__coctail--item__link" data-name=${strIngredient7} href="#">&#10038 ${andrei(
+                strMeasure7
+              )} ${andrei(strIngredient7)}</a></li>`
+            : ``
+        }
+        ${
+          strMeasure8
+            ? `<li class="mod__coctail--item" ><a class="mod__coctail--item__link" data-name=${strIngredient8} href="#">&#10038 ${andrei(
+                strMeasure8
+              )} ${andrei(strIngredient8)}</a></li>`
+            : ``
+        }
+        ${
+          strMeasure9
+            ? `<li class="mod__coctail--item" ><a class="mod__coctail--item__link" data-name=${strIngredient9} href="#">&#10038 ${andrei(
+                strMeasure9
+              )} ${andrei(strIngredient9)}</a></li>`
+            : ``
+        }
+        ${
+          strMeasure10
+            ? `<li class="mod__coctail--item" ><a class="mod__coctail--item__link" data-name=${strIngredient10} href="#">&#10038 ${andrei(
+                strMeasure10
+              )} ${andrei(strIngredient10)}</a></li>`
             : ``
         }
       </ul>
