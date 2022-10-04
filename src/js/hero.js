@@ -6,9 +6,7 @@ const ulContainer = document.querySelector('.hero-list');
 const renderContainer = document.querySelector('.main__flex');
 const errorContainer = document.querySelector('.sorry');
 
-if (ulContainer) {
-  ulContainer.addEventListener('click', onClickBtn);
-}
+ulContainer.addEventListener('click', onClickBtn);
 
 export default async function onClickBtn(event) {
   const value = event.target.dataset.value.toLowerCase();
@@ -17,14 +15,11 @@ export default async function onClickBtn(event) {
   }
   try {
     const responseData = await API.fetchGetData(value);
-    // console.log(responseData);
+
     wichDataToUse(numberOfCards, responseData.drinks);
 
     const markup = crateImageMarkUp(responseData.drinks);
-    // console.log(responseData.drinks)
 
-    // renderContainer.innerHTML = '';
-    // renderContainer.insertAdjacentHTML('beforeend', markup);
     errorContainer.classList.add('error-hidden');
   } catch (error) {
     renderContainer.innerHTML = '';

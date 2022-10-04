@@ -2,7 +2,9 @@ const inputSwEl = document.querySelector('.dark-button');
 const dataInput = document.querySelector('[data-switcher-desktop]');
 inputSwEl.addEventListener('click', () => {
   const currentTheme = document.documentElement.dataset.theme;
+  console.log(currentTheme);
   const theme = currentTheme === 'light' ? 'dark' : 'light';
+  console.log(theme);
   document.documentElement.setAttribute('data-theme', theme);
   addThemeToLocalSt(theme);
 });
@@ -14,7 +16,7 @@ function getThemefromLocalSt() {
 }
 
 function getTheme() {
-  const theme = localStorage.getItem('DESKTOP_THEME');
+  const theme = getThemefromLocalSt();
   if (!theme) return;
   dataInput.checked = theme === 'dark';
   document.documentElement.setAttribute('data-theme', theme);
