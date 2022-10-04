@@ -84,6 +84,7 @@ function openSecondModal(event) {
   console.log(nameIngredient);
   getElement(nameIngredient).then(data => {
     clearMarkupModal(divs);
+    divs.classList.remove('is-hidden');
     const dataIngredient = data.ingredients;
     const markup = createIngredientMarkup(dataIngredient);
     add(markup);
@@ -255,8 +256,6 @@ function onCloseBtnFuncCoct() {
   refs.modCoctailWindow.classList.add('is-hidden');
   refs.modCoctailWindow.removeEventListener('click', btnAddToFavorite);
 }
-
-
 
 //функция от Юры
 // const getData = () => {
