@@ -84,7 +84,7 @@ function openSecondModal(event) {
   console.log(nameIngredient);
   getElement(nameIngredient).then(data => {
     clearMarkupModal(divs);
-    dataIngredient = data.ingredients;
+    const dataIngredient = data.ingredients;
     const markup = createIngredientMarkup(dataIngredient);
     add(markup);
     window.addEventListener('keydown', onEscapeBtnPush);
@@ -256,25 +256,7 @@ function onCloseBtnFuncCoct() {
   refs.modCoctailWindow.removeEventListener('click', btnAddToFavorite);
 }
 
-// функция - закрытие модалки по backdrope
 
-// let modCoctailBtnClose = document.querySelector(".mod__coctail--btn__close")
-//   modCoctailBtnClose.addEventListener('click', closeModalBtnCocktail)
-// для коммита
-
-// refs.modCoctailBtnClose.addEventListener('click', clearMarkup)
-
-// function closeModalBtnCocktail() {
-//   refs.modCoctailWindow.classList.add('is-hidden')
-// }
-
-// getElement('vodka').then(data => {
-//   clearMarkupModal(divs);
-//   dataIngredient = data.ingredients;
-//   const markup = createIngredientMarkup(dataIngredient);
-//   add(markup);
-//   window.addEventListener('keydown', onEscapeBtnPush);
-// });
 
 //функция от Юры
 // const getData = () => {
