@@ -28,10 +28,13 @@
   transform: translate(-50%, -50%);
   background-color: $primary-bg-color;
 
-  width: 480px;
-  max-height: 1150px;
+  width: 90%;
   padding: 40px 20px;
   overflow: hidden;
+
+  @media screen and(min-width:480px) {
+    width: 480px;
+  }
 
   @media screen and(min-width:768px) {
       width: 768px;

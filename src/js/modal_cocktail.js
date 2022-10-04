@@ -324,3 +324,22 @@ function onCloseBtnFuncCoct() {
 //   console.log(measureKeys)
 // }
 // createLiMarcup()
+
+
+// .backdrop {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background: rgba(0, 0, 0, 0.2);
+//   transition: opacity 250ms linear, visibility 250ms linear;
+
+//   overflow: visible;
+// }
+
+// .backdrop.is-hidden {
+//   opacity: 0;
+//   pointer-events: none;
+//   visibility: hidden;
+// }
