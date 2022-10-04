@@ -91,6 +91,7 @@
     padding-bottom: 60px;
   }
 }
+//Learn more
 
 .button__main-full {
   padding: 7px 17px;
@@ -110,56 +111,50 @@
     color: $main-orange;
   }
 }
+// add to
 
 .button__main-empty {
-  padding: 8px 8px;
+  // padding: 8px 8px;
+  width: 104px;
   @media screen and (min-width: 768px) {
-    padding: 12px 7px 12px 7px;
+    width: 127px;
+    // padding: 12px 7px 12px 7px;
   }
   @media screen and (min-width: 1280px) {
-    padding: 12px 12px 12px 23px;
-  }
-  color: $main-orange;
-  background-color: transparent;
-  align-items: center;
-  // display: flex;
-  justify-content: space-between;
-  // gap: 9px;
-  transition: all $transition-time $transition-function;
-  &:hover {
-    background-color: $btn-hover;
-    color: $main-orange;
-  }
-  // &:hover .main__button-imgfull {
-  //   display: block;
-  //   position: absolute;
-  //   bottom: 0;
-  //   right: 0;
-  //   transform: translate(-20px, -12px);
-
-  //   @media screen and (min-width: 768px) {
-  //     transform: translate(-16px, -14px);
-  //   }
-  //   @media screen and (min-width: 1280px) {
-  //     transform: translate(-10px, -14px);
-  //   }
-  // }
-}
-
-.button-favorite {
-  padding: 10px 17px;
-  @media screen and (min-width: 768px) {
-    padding: 12px 7px 12px 7px;
-  }
-  @media screen and (min-width: 1280px) {
-    padding: 12px 10px 12px 10px;
+    // padding: 12px 21px 12px 24px;
+    // padding: 12px 11px 12px 12px;
+    width: 136px;
   }
   color: $main-orange;
   background-color: transparent;
   align-items: center;
   display: flex;
-  justify-content: space-between;
-  gap: 17px;
+  justify-content: center;
+  gap: 5px;
+  transition: all $transition-time $transition-function;
+  &:hover {
+    background-color: $btn-hover;
+    color: $main-orange;
+  }
+}
+// remove
+.button-favorite {
+  // padding: 10px 17px;
+  width: 104px;
+  @media screen and (min-width: 768px) {
+    // padding: 12px 7px 12px 7px;
+    width: 127px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 136px;
+    // padding: 12px 11px 12px 12px;
+  }
+  color: $main-orange;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 5px;
   transition: all $transition-time $transition-function;
   &:hover {
     background-color: $btn-hover;
@@ -193,18 +188,20 @@
     gap: 16px;
   }
 }
-
+// add
 .main__button-img {
+  display: inline-block;
   vertical-align: middle;
 
   width: 20px;
   height: 18px;
 }
+// remove
 .main__button-imgfull {
-  display: block;
+  display: inline-block;
+  vertical-align: middle;
   width: 20px;
   height: 18px;
-  transform: translateX(-10px);
 }
 .main__flex {
   display: flex;
@@ -212,24 +209,6 @@
   gap: 32px;
   
 }
-// #scroll-top {
-//   position: fixed;
-//   bottom: 85px;
-//   right: 45px;
-//   font-size: 40px;
-//   z-index: 999;
-//   color: orange;
-//   fill: orange;
-// }
-// .scroll__main {
-//   width: 48px;
-//   height: 32px;
-//   opacity: 1;
-//   transition: 0.4s;
-//   &__hide {
-//     opacity: 0;
-//   }
-// }
 
 html {
   scroll-behavior: smooth;
@@ -275,9 +254,6 @@ html {
   transform: translateY(0);
 }
 
-// .scroll__top-svg{
-
-// }
 .scroll__top-svg-path {
   box-sizing: border-box;
   fill: none;
@@ -346,3 +322,18 @@ html {
   opacity: 0;
   pointer-events: none;
 }
+
+// &:hover .main__button-imgfull {
+//   display: block;
+//   position: absolute;
+//   bottom: 0;
+//   right: 0;
+//   transform: translate(-20px, -12px);
+
+//   @media screen and (min-width: 768px) {
+//     transform: translate(-16px, -14px);
+//   }
+//   @media screen and (min-width: 1280px) {
+//     transform: translate(-10px, -14px);
+//   }
+// }

@@ -1,11 +1,10 @@
 import axios from 'axios';
-import Notiflix from 'notiflix';
-import crateImageMarkUp from './murk-up';
-import { divRef } from './add-murk-up';
 
-import addMurkup from './add-murk-up';
+import { errorContainer, renderContainer } from './hero';
 
 import { wichDataToUse, numberOfCards } from './random';
+
+const title = document.querySelector('.main__title');
 
 const refs = {
   openModalBtn: document.querySelector('[data-header-modal-open]'),
@@ -103,20 +102,17 @@ async function getCoctail(coctaillNameVal) {
 async function amountData(coctaillNameVal) {
   try {
     const data = await getCoctail(coctaillNameVal);
-    //divRef.innerHTML = '';
+    if (data.drinks === null) {
+      errorContainer.classList.remove('error-hidden');
+      renderContainer.innerHTML = '';
+      title.style.display = 'none';
+      return;
+    }
+    renderContainer.innerHTML = '';
+    title.style.display = 'block';
     errorDivEl.classList.add('error-hidden');
-    // addMurkup(crateImageMarkUp(data.drinks));
     wichDataToUse(numberOfCards, data.drinks);
-    console.log(data.drinks);
   } catch (error) {
-    // console.log(error.massage);
-    divRef.innerHTML = '';
-    errorDivEl.classList.remove('error-hidden');
-    titleErrorEl.classList.add('is-hidden');
+    throw new Error(error);
   }
 }
-
-// //Функция добавления разметки по поиску в инпуте
-// function inputAddMurkup(arr = []) {
-//   divRef.innerHTML = arr;
-// };
