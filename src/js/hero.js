@@ -1,6 +1,6 @@
 import * as API from '../servises/cocktails-api';
 import crateImageMarkUp from './murk-up';
-import * as random from './random';
+import { wichDataToUse, numberOfCards } from './random';
 
 const ulContainer = document.querySelector('.hero-list');
 const renderContainer = document.querySelector('.main__flex');
@@ -16,7 +16,7 @@ export default async function onClickBtn(event) {
   try {
     const responseData = await API.fetchGetData(value);
     // console.log(responseData);
-    random.wichDataToUse(random.numberOfCards, responseData.drinks);
+    wichDataToUse(numberOfCards, responseData.drinks);
 
     const markup = crateImageMarkUp(responseData.drinks);
     // console.log(responseData.drinks)
