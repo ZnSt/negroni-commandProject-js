@@ -6,7 +6,9 @@ const ulContainer = document.querySelector('.hero-list');
 const renderContainer = document.querySelector('.main__flex');
 const errorContainer = document.querySelector('.sorry');
 
-ulContainer.addEventListener('click', onClickBtn);
+if (ulContainer) {
+  ulContainer.addEventListener('click', onClickBtn);
+}
 
 export default async function onClickBtn(event) {
   const value = event.target.dataset.value.toLowerCase();

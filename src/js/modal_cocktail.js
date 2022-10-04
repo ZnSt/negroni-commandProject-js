@@ -214,7 +214,6 @@ function btnAddToFavorite(e) {
     console.log(e.target.nodeName);
     return;
   }
-
   const numberId = dataCoct[0].idDrink;
   const btn1 = document.querySelector('.mod__coctail--button--add');
 
