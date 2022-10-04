@@ -3,11 +3,11 @@ import crateImageMarkUp from './murk-up';
 import { wichDataToUse, numberOfCards } from './random';
 
 const ulContainer = document.querySelector('.hero-list');
-const renderContainer = document.querySelector('.main__flex');
-const errorContainer = document.querySelector('.sorry');
+export const renderContainer = document.querySelector('.main__flex');
+export const errorContainer = document.querySelector('.sorry');
+const title = document.querySelector('.main__title');
 
 ulContainer.addEventListener('click', onClickBtn);
-
 export default async function onClickBtn(event) {
   const value = event.target.dataset.value.toLowerCase();
   if (event.target.nodeName !== 'LI') {
@@ -16,13 +16,21 @@ export default async function onClickBtn(event) {
   try {
     const responseData = await API.fetchGetData(value);
 
-    wichDataToUse(numberOfCards, responseData.drinks);
-
-    const markup = crateImageMarkUp(responseData.drinks);
-
-    errorContainer.classList.add('error-hidden');
+    if (responseData.drinks === null) {
+      console.log('у нас ничего нету');
+      errorContainer.classList.remove('error-hidden');
+      title.style.display = 'none';
+      renderContainer.innerHTML = '';
+      return;
+    } else {
+      renderContainer.innerHTML = '';
+      title.style.display = 'block';
+      wichDataToUse(numberOfCards, responseData.drinks);
+      crateImageMarkUp(responseData.drinks);
+      errorContainer.classList.add('error-hidden');
+      console.log(responseData.drinks);
+    }
   } catch (error) {
-    renderContainer.innerHTML = '';
-    errorContainer.classList.remove('error-hidden');
+    throw new Error(error);
   }
 }
