@@ -1,3 +1,5 @@
+console.log('sdsdsdcdsc')
+
 const mainDivEl = document.querySelector('.main')
 console.log(mainDivEl)
 if (divRef.dataset.page === 'favorite-coctails'){}

@@ -166,7 +166,7 @@ function clearContainer() {
 export function wichDataToUse(numberOfCards, data) {
   if (divRef.dataset.page === 'favorite-coctails') {
     allPromises = JSON.parse(localStorage.getItem('FAV_COCTAILS'));
-    console.log('favorite-coctails  allPromises', allPromises);
+    // console.log('favorite-coctails  allPromises', allPromises);
 
     start(numberOfCards);
     return;
@@ -174,12 +174,11 @@ export function wichDataToUse(numberOfCards, data) {
   if (data) {
     allPromises = data;
     start(numberOfCards);
-    console.log('hasdata  allPromises', allPromises);
     return;
   }
 
   getRandomData(numberOfCards);
-  console.log('getRandomData  allPromises', allPromises);
+  // console.log('getRandomData  allPromises', allPromises);
 }
 
 // фильтрация промисей
@@ -198,12 +197,10 @@ async function getRandomData(numberOfCards) {
 }
 
 async function start(number) {
-  console.log('start allPromises', allPromises);
 
   const renderArray = [...allPromises];
 
   renderArray.splice(number, allPromises.length);
-  //   console.log('allPromises :>> ', allPromises);
   const create = await crateImageMarkUp(renderArray);
   spinnerRef.classList.add('visually-hidden-spinner');
   addMurkup(create);
