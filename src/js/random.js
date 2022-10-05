@@ -148,15 +148,15 @@ function checkSize(e) {
 
   if (screenWidth < 768) {
     clearContainer();
-    wichDataToUse(3);
+    start(3);
   }
   if (screenWidth >= 768 && screenWidth < 1280) {
     clearContainer();
-    wichDataToUse(6);
+    start(6);
   }
   if (screenWidth >= 1280) {
     clearContainer();
-    wichDataToUse(9);
+    start(9);
   }
 }
 

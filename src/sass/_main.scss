@@ -82,6 +82,7 @@
   background-color: var(--primary-bg-color);
   padding-top: 20px;
   padding-bottom: 20px;
+  min-height: calc(100vh - 63px - 60px);
   @media screen and (min-width: 768px) {
     padding-top: 30px;
     padding-bottom: 90px;
@@ -89,6 +90,8 @@
   @media screen and (min-width: 1280px) {
     padding-bottom: 60px;
   }
+}
+.empty_main{  padding-top: 60px;
 }
 //Learn more
 
