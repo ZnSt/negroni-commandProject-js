@@ -102,10 +102,7 @@ export function load(key) {
 }
 
 function onClickBtnAdd(e) {
-  // if (e.target.closest('.modalw2__btn')) {
   const onCloseBtn = document.querySelector('.modalw2__btn');
-  //   onCloseBtn.addEventListener('click', onCloseBtnFunc);
-  // }
 
   if (e.target.nodeName !== 'BUTTON') {
     return;
@@ -114,7 +111,6 @@ function onClickBtnAdd(e) {
   const dataName = e.target.dataset.name;
   console.log(dataName);
   getElement(dataName).then(data => {
-    // clearMarkupModal(divs);
     dataIngredient = data.ingredients;
     const numberId = dataIngredient[0].idIngredient;
     const btn1 = document.querySelector('.modalw2--button--add');
@@ -132,9 +128,6 @@ function onClickBtnAdd(e) {
       save('localIngredient', loadObj);
       btn1.textContent = 'Remove from favorite';
     }
-    // const markup = createIngredientMarkup(dataIngredient);
-    // add(markup);
-    // window.addEventListener('keydown', onEscapeBtnPush);
   });
 }
 
